@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">线上环境Pad管理端V1.3</string>
+
+    <string name="down_book_loading">下载中%1$s</string>
+    <string name="down_book_error">下载失败 ,请重新下载?</string>
+    <string name="string_login">登录</string>
+    <string name="string_my">我的</string>
+    <string name="string_book">图书</string>
+    <string name="string_read">点读</string>
+    <string name="string_question">题库</string>
+    <string name="string_all">全部</string>
+    <string name="string_bianj">编辑</string>
+    <string name="string_xiaodui">校对</string>
+    <string name="string_shengk">审核</string>
+    <string name="string_pause">取消</string>
+</resources>

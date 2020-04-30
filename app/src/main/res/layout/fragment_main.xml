@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/real_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y65"
+        android:background="@drawable/img_main_view">
+
+        <ImageView
+            android:id="@+id/img_refush"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_main_shuax" />
+
+        <LinearLayout
+            android:id="@+id/liner"
+            android:layout_width="@dimen/x411"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/img_refush"
+            android:orientation="horizontal"
+
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_all"
+                    style="@style/maintextTitle"
+                    android:text="@string/string_all" />
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="@dimen/x50"
+                    android:layout_height="@dimen/x5"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/x5"
+                    android:background="@color/white"></View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_bianj"
+                    style="@style/maintextTitle"
+                    android:text="@string/string_bianj" />
+
+                <View
+                    android:id="@+id/view2"
+                    style="@style/main_view"
+                    android:visibility="gone"></View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_xiaodui"
+                    style="@style/maintextTitle"
+                    android:text="@string/string_xiaodui" />
+
+                <View
+                    android:id="@+id/view3"
+                    style="@style/main_view"
+                    android:visibility="gone"></View>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_shengh"
+                    style="@style/maintextTitle"
+                    android:text="@string/string_shengk" />
+
+                <View
+                    android:id="@+id/view4"
+                    style="@style/main_view"
+                    android:visibility="gone"></View>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imh_serach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/img_main_serach" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/real_serach"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x65"
+        android:background="@drawable/img_main_view"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="@dimen/x837"
+            android:layout_height="@dimen/y48"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x20"
+            android:background="@drawable/shape_background_white">
+
+            <ImageView
+                android:layout_width="@dimen/x45"
+                android:layout_height="@dimen/x45"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/x8"
+                android:layout_marginRight="@dimen/x8"
+                android:src="@drawable/img_main_normal_serach" />
+
+            <EditText
+                android:id="@+id/edit_serach"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="搜索书名/显示名称"
+                android:textSize="@dimen/x26" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x25"
+            android:text="@string/string_pause"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x28" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginRight="@dimen/x10"></android.support.v7.widget.RecyclerView>
+</LinearLayout>
