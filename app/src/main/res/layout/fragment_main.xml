@@ -8,6 +8,7 @@
         android:id="@+id/real_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y65"
+
         android:background="@drawable/img_main_view">
 
         <ImageView
@@ -21,6 +22,7 @@
             android:layout_width="@dimen/x411"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x200"
             android:layout_toRightOf="@id/img_refush"
             android:orientation="horizontal"
 
@@ -103,61 +105,23 @@
             </LinearLayout>
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imh_serach"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/img_main_serach" />
     </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/real_serach"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/x65"
-        android:background="@drawable/img_main_view"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="@dimen/x837"
-            android:layout_height="@dimen/y48"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/x20"
-            android:background="@drawable/shape_background_white">
-
-            <ImageView
-                android:layout_width="@dimen/x45"
-                android:layout_height="@dimen/x45"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/x8"
-                android:layout_marginRight="@dimen/x8"
-                android:src="@drawable/img_main_normal_serach" />
-
-            <EditText
-                android:id="@+id/edit_serach"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="搜索书名/显示名称"
-                android:textSize="@dimen/x26" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/text_pause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/x25"
-            android:text="@string/string_pause"
-            android:textColor="@color/white"
-            android:textSize="@dimen/x28" />
-    </RelativeLayout>
-
-    <android.support.v7.widget.RecyclerView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/book_list_color"
+            android:nestedScrollingEnabled="false"></android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/include_fail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/x10"
-        android:layout_marginTop="@dimen/x20"
-        android:layout_marginRight="@dimen/x10"></android.support.v7.widget.RecyclerView>
+        android:gravity="center">
+
+        <include
+            layout="@layout/laod_fail_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></include>
+    </LinearLayout>
 </LinearLayout>

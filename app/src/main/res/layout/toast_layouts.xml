@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_width="@dimen/x300"
+        android:layout_height="@dimen/y200"
+        android:layout_gravity="center"
+        android:background="@drawable/img_ok_background">
+
+        <TextView
+            android:id="@+id/text_message"
+            android:layout_marginTop="@dimen/x100"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/book_title_color"
+            android:textSize="@dimen/x24"
+            android:text="提交成功"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</RelativeLayout>

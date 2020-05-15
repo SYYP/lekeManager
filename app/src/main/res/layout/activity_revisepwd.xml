@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/text_color"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y65">
+
+
+      <ImageView
+          android:layout_gravity="center"
+          android:src="@drawable/img_revise_pwd"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+
+        <TextView
+            android:textSize="@dimen/x30"
+            android:textColor="@color/black"
+            android:layout_centerInParent="true"
+            android:text="@string/string_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="@dimen/x4"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80">
+
+        <EditText
+            android:id="@+id/edit_old"
+            android:layout_marginLeft="@dimen/x10"
+            android:textColor="@color/book_title_color"
+            android:textSize="@dimen/x24"
+            android:hint="原密码"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="@dimen/x4"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80">
+
+        <EditText
+            android:id="@+id/edit_newpwd"
+            android:layout_marginLeft="@dimen/x10"
+            android:textColor="@color/book_title_color"
+            android:textSize="@dimen/x24"
+            android:hint="新密码"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="@dimen/x4"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80">
+
+        <EditText
+            android:id="@+id/edit_surepwd"
+            android:layout_marginLeft="@dimen/x10"
+            android:textColor="@color/book_title_color"
+            android:textSize="@dimen/x24"
+            android:hint="新密码"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_sure"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x36"
+        android:text="@string/string_sure"
+        android:layout_marginTop="@dimen/x99"
+        android:layout_gravity="center"
+        android:background="@drawable/img_btn_login"
+        android:layout_width="@dimen/x481"
+        android:layout_height="@dimen/y80"></Button>
+</LinearLayout>

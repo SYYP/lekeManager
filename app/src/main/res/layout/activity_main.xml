@@ -4,22 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_ground"
     tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/frag_ment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/x65"
-        android:layout_marginBottom="@dimen/x135"></FrameLayout>
+        android:layout_marginBottom="@dimen/y70"></FrameLayout>
 
     <LinearLayout
+
         android:layout_width="match_parent"
 
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/y70"
         android:layout_alignParentBottom="true"
-        android:background="@color/white">
+        android:background="@drawable/shape_top_line">
 
         <FrameLayout
             android:layout_width="wrap_content"

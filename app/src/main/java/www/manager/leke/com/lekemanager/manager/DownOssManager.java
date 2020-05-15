@@ -80,12 +80,12 @@ public class DownOssManager {
         initOSSClient(info.getEndpoint());
     }
 
-    private DownOssistener mListener;
+//    private DownOssistener mListener;
 
     public void downBookAsy(final DownOssBean info, final DownOssistener listener) {
         LogUtils.e("save path..."+info.getSaveFilePath());
         mInfo = info;
-        mListener = listener;
+//        mListener = listener;
         init(info);
         GetObjectRequest get = new GetObjectRequest(info.getBucketName(), info.getObjectKey());
 
@@ -100,7 +100,7 @@ public class DownOssManager {
                 long length = result.getContentLength();
                 if (length == 0) {
                     FileUtils.deleteFile(info.getSaveFilePath());
-                    mListener.onFailure(request, null, null);
+                    listener.onFailure(request, null, null);
                     return;
                 }
                 double rate = (double) 100 / length;  //最大进度转化为100
@@ -112,7 +112,7 @@ public class DownOssManager {
                     fos = new FileOutputStream(info.getSaveFilePath());
                     while ((len = inputStream.read(buffer)) != -1) {
                         // 处理下载的数据
-//                        LogUtils.e("asyncGetObjectSample", "read length: " + len);
+                        LogUtils.e("asyncGetObjectSample", "read length: " + len);
                         fos.write(buffer, 0, len);
                         total += len;
 
@@ -121,7 +121,7 @@ public class DownOssManager {
                     listener.onFinish();
                 } catch (IOException e) {
                     FileUtils.deleteFile(info.getSaveFilePath());
-                    mListener.onFailure(request, null, null);
+                    listener.onFailure(request, null, null);
                     e.printStackTrace();
                 } finally {
 //                    System.out.println(".........finally");
@@ -151,7 +151,7 @@ public class DownOssManager {
                 }
 
                 FileUtils.deleteFile(info.getSaveFilePath());
-                mListener.onFailure(request, clientExcepion, serviceException);
+                listener.onFailure(request, clientExcepion, serviceException);
             }
         });
     }

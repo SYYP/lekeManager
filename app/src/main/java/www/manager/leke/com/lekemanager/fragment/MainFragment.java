@@ -1,10 +1,10 @@
 package www.manager.leke.com.lekemanager.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -43,17 +43,19 @@ public abstract class MainFragment extends BaseFragment {
     View view4;
     @BindView(R.id.liner)
     LinearLayout liner;
-    Unbinder unbinder;
-    @BindView(R.id.imh_serach)
-    ImageView imhSerach;
     @BindView(R.id.real_title)
     RelativeLayout realTitle;
-    @BindView(R.id.edit_serach)
-    EditText editSerach;
-    @BindView(R.id.text_pause)
-    TextView textPause;
-    @BindView(R.id.real_serach)
-    RelativeLayout realSerach;
+    @BindView(R.id.recycler_view)
+    RecyclerView recyclerView;
+    @BindView(R.id.img_fail)
+    ImageView imgFail;
+    @BindView(R.id.tv_failMsg)
+    TextView tvFailMsg;
+    @BindView(R.id.ll_fail)
+    LinearLayout llFail;
+    @BindView(R.id.include_fail)
+    LinearLayout includeFail;
+
 
 
     @Override
@@ -73,22 +75,14 @@ public abstract class MainFragment extends BaseFragment {
     @Override
     protected void loadData() {
     }
-    @OnClick({R.id.imh_serach, R.id.text_pause, R.id.text_all, R.id.text_bianj, R.id.text_xiaodui, R.id.text_shengh,
+
+    @OnClick({R.id.text_all, R.id.text_bianj, R.id.text_xiaodui, R.id.text_shengh,
             R.id.img_refush})
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.imh_serach://搜索
-                realTitle.setVisibility(View.GONE);
-                realSerach.setVisibility(View.VISIBLE);
-                break;
-            case R.id.text_pause://取消
-                realTitle.setVisibility(View.VISIBLE);
-                realSerach.setVisibility(View.GONE);
-                break;
-
             case R.id.text_all://全部
-                setViewViisib(false, view1);
-                setViewViisib(true, view2);
+                setViewViisib(true, view1);
+                setViewViisib(false, view2);
                 setViewViisib(false, view3);
                 setViewViisib(false, view4);
                 setTextSize(true, textAll);
@@ -98,8 +92,8 @@ public abstract class MainFragment extends BaseFragment {
                 getTextAll();
                 break;
             case R.id.text_bianj://编辑
-                setViewViisib(true, view1);
-                setViewViisib(false, view2);
+                setViewViisib(false, view1);
+                setViewViisib(true, view2);
                 setViewViisib(false, view3);
                 setViewViisib(false, view4);
                 setTextSize(false, textAll);
@@ -163,5 +157,6 @@ public abstract class MainFragment extends BaseFragment {
             textView.setTextSize(getResources().getDimension(R.dimen.x28));
         }
     }
+
 
 }

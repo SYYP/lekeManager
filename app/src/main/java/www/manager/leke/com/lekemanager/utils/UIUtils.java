@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.os.Process;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -19,12 +20,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 import www.manager.leke.com.lekemanager.base.BaseFragmentActivity;
 import www.manager.leke.com.lekemanager.manager.AppManager;
 
+import static www.manager.leke.com.lekemanager.manager.AppManager.getMainThreadId;
+
 
 /**
  * Created by lipan on 2014/6/19.
  */
 public class UIUtils {
 
+    public static Handler getMainThreadHandler() {
+        return AppManager.getMainThreadHandler();
+    }
+    //-------------------------------Handler---------------------------------------------------
+    public static boolean post(Runnable runnable) {
+        boolean result = false;
+        Handler handler = getMainThreadHandler();
+        if (handler != null) {
+            result = handler.post(runnable);
+        }
+        return result;
+    }
     /**
      * 获取Context
      */
@@ -53,7 +68,10 @@ public class UIUtils {
             return 0;
         }
     }
+    public static int getDimension(int id) {
 
+        return getResources().getDimensionPixelOffset(id);
+    }
     /**
      * px转换dip
      */
@@ -167,7 +185,7 @@ public class UIUtils {
 
     public static void showToast(final int resId, final int duration) {
 
-        if (AppManager.getMainThreadId() == Process.myTid()) {
+        if (getMainThreadId() == Process.myTid()) {
             Toaster.showDefaultToast(getContext(), resId, duration);
         } else {
             AppManager.postHandler(new Runnable() {
@@ -188,7 +206,7 @@ public class UIUtils {
      */
     public static void showToastSafe(final int resId) {
 
-        if (AppManager.getMainThreadId() == Process.myTid()) {
+        if (getMainThreadId() == Process.myTid()) {
             Toaster.showDefaultToast(getContext(), resId, Toast.LENGTH_SHORT);
         } else {
             AppManager.postHandler(new Runnable() {
@@ -212,7 +230,7 @@ public class UIUtils {
      * @param duration Toast的持续时间
      */
     public static void showToastSafe(final CharSequence text, final int duration) {
-        if (AppManager.getMainThreadId() == Process.myTid()) {
+        if (getMainThreadId() == Process.myTid()) {
                 Toaster.showDefaultToast(getContext(), text, duration);
         } else {
             AppManager.postHandler(new Runnable() {
@@ -353,6 +371,20 @@ public class UIUtils {
             topActivityName = runningTaskInfo.topActivity.getClassName();
         }
         return topActivityName;
+    }
+
+    public static boolean isRunInMainThread() {
+        return Thread.currentThread().getId() == getMainThreadId();
+    }
+    /**
+     * 在主线程执行
+     */
+    public static void runInMainThread(Runnable runnable) {
+        if (isRunInMainThread()) {
+            runnable.run();
+        } else {
+            post(runnable);
+        }
     }
 
 }

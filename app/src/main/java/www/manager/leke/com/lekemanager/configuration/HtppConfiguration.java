@@ -23,7 +23,7 @@ public class HtppConfiguration {
 
     public static void initUrl() {
         if (SpUtils.getInt("url", 0) == 0) {
-            BASE_URL = "http://api.edu-pad.com.cn/";
+            BASE_URL = "https://admin.learningpad.cn/";
             ENDPOINT = "http://oss-cn-beijing.aliyuncs.com";
             ANSWER_PIC_HOST = ".oss-cn-beijing.aliyuncs.com/";
         } else {

@@ -9,9 +9,13 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import www.manager.leke.com.lekemanager.base.BaseFragment;
 import www.manager.leke.com.lekemanager.base.BaseFragmentActivity;
 import www.manager.leke.com.lekemanager.fragment.BookFragment;
 import www.manager.leke.com.lekemanager.fragment.MainFragment;
+import www.manager.leke.com.lekemanager.fragment.Myfragment;
+import www.manager.leke.com.lekemanager.fragment.QuestionFragment;
+import www.manager.leke.com.lekemanager.fragment.ReadFragment;
 
 public class MainActivity extends BaseFragmentActivity {
 
@@ -23,11 +27,16 @@ public class MainActivity extends BaseFragmentActivity {
     ImageView imgQuestion;
     @BindView(R.id.img_my)
     ImageView imgMy;
-    MainFragment mCutterFragment;
+    BaseFragment mCutterFragment;
     BookFragment mBookFragment;
+    ReadFragment mReadFragment;
+    QuestionFragment mQuestionFragment;
+    Myfragment mMyfragment;
+    boolean isAdd;
 
     @Override
-    public void init() {}
+    public void init() {
+    }
 
     @Override
     public View layout() {
@@ -35,12 +44,21 @@ public class MainActivity extends BaseFragmentActivity {
     }
 
     @Override
-    public void loadData() {}
+    public void loadData() {
+        imgBook.setImageDrawable(getResources().getDrawable(R.drawable.img_main_book_press));
+        if (mBookFragment == null) {
+            mBookFragment = new BookFragment();
+            isAdd = true;
+
+        }
+        showFragment(mBookFragment, isAdd);
+    }
 
     @Override
-    protected void dimissHtpp() { }
+    protected void dimissHtpp() {
+    }
 
-    private void showFragment(MainFragment fragment, boolean isAdd) {
+    private void showFragment(BaseFragment fragment, boolean isAdd) {
         if (mCutterFragment != null && fragment != null && mCutterFragment == fragment) {
             return;
         }
@@ -66,30 +84,48 @@ public class MainActivity extends BaseFragmentActivity {
                 imgRead.setImageDrawable(getResources().getDrawable(R.drawable.img_main_read_normal));
                 imgQuestion.setImageDrawable(getResources().getDrawable(R.drawable.img_main_question_normal));
                 imgMy.setImageDrawable(getResources().getDrawable(R.drawable.img_main_my_normal));
-                if(mBookFragment==null){
-                    mBookFragment=new BookFragment();
-                    isAdd=true;
+                if (mBookFragment == null) {
+                    mBookFragment = new BookFragment();
+                    isAdd = true;
 
                 }
-                showFragment(mBookFragment,isAdd);
+                showFragment(mBookFragment, isAdd);
                 break;
             case R.id.img_read:
                 imgBook.setImageDrawable(getResources().getDrawable(R.drawable.img_main_book_normal));
                 imgRead.setImageDrawable(getResources().getDrawable(R.drawable.img_main_read_press));
                 imgQuestion.setImageDrawable(getResources().getDrawable(R.drawable.img_main_question_normal));
                 imgMy.setImageDrawable(getResources().getDrawable(R.drawable.img_main_my_normal));
+                if (mReadFragment == null) {
+                    mReadFragment = new ReadFragment();
+                    isAdd = true;
+
+                }
+                showFragment(mReadFragment, isAdd);
                 break;
             case R.id.img_question:
                 imgBook.setImageDrawable(getResources().getDrawable(R.drawable.img_main_book_normal));
                 imgRead.setImageDrawable(getResources().getDrawable(R.drawable.img_main_read_normal));
                 imgQuestion.setImageDrawable(getResources().getDrawable(R.drawable.img_main_question_press));
                 imgMy.setImageDrawable(getResources().getDrawable(R.drawable.img_main_my_normal));
+                if (mQuestionFragment == null) {
+                    mQuestionFragment = new QuestionFragment();
+                    isAdd = true;
+
+                }
+                showFragment(mQuestionFragment, isAdd);
                 break;
             case R.id.img_my:
                 imgBook.setImageDrawable(getResources().getDrawable(R.drawable.img_main_book_normal));
                 imgRead.setImageDrawable(getResources().getDrawable(R.drawable.img_main_read_normal));
                 imgQuestion.setImageDrawable(getResources().getDrawable(R.drawable.img_main_question_normal));
                 imgMy.setImageDrawable(getResources().getDrawable(R.drawable.img_main_my_press));
+                if (mMyfragment == null) {
+                    mMyfragment = new Myfragment();
+                    isAdd = true;
+
+                }
+                showFragment(mMyfragment, isAdd);
                 break;
             default:
                 break;

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_marginRight="@dimen/x10"
+    android:layout_marginTop="@dimen/x20"
+    android:layout_marginLeft="@dimen/x10"
+android:layout_width="@dimen/x460"
+android:layout_height="@dimen/y276"
+android:background="@drawable/shape_background_white">
+
+<ImageView
+    android:id="@+id/img_book"
+    android:layout_margin="@dimen/x10"
+    android:layout_width="@dimen/x150"
+    android:layout_height="@dimen/y200" />
+
+<View
+    android:id="@+id/view_line"
+    android:layout_below="@id/img_book"
+    android:background="@color/text_color"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/x1"></View>
+
+<LinearLayout
+    android:layout_marginLeft="@dimen/x100"
+    android:layout_below="@id/view_line"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/fram_look_question_bank"
+        android:layout_marginTop="@dimen/x10"
+        android:background="@drawable/shape_background_hui"
+        android:layout_width="@dimen/x124"
+        android:layout_height="@dimen/y35">
+
+        <TextView
+            android:textSize="@dimen/x20"
+            android:layout_gravity="center"
+            android:text="@string/string_lookquestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/string_look_question"
+        android:layout_marginLeft="@dimen/x19"
+        android:layout_marginTop="@dimen/x10"
+        android:background="@drawable/shape_background_hui"
+        android:layout_width="@dimen/x95"
+        android:layout_height="@dimen/y35">
+
+        <TextView
+            android:textSize="@dimen/x20"
+            android:layout_gravity="center"
+            android:text="@string/string_look_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fram_ok"
+        android:layout_marginLeft="@dimen/x19"
+        android:layout_marginTop="@dimen/x10"
+        android:background="@drawable/shape_background_hui"
+        android:layout_width="@dimen/x95"
+        android:layout_height="@dimen/y35">
+
+        <TextView
+            android:id="@+id/text_name"
+            android:textSize="@dimen/x20"
+            android:layout_gravity="center"
+            android:text="@string/string_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>
+
+<TextView
+    android:textColor="@color/black"
+    android:textSize="@dimen/x24"
+    android:layout_marginTop="@dimen/x10"
+    android:layout_toRightOf="@id/img_book"
+    android:text="语文五年级下册"
+    android:id="@+id/text_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+<TextView
+    android:minLines="1"
+    android:layout_below="@id/text_title"
+    android:textColor="@color/gray"
+    android:textSize="@dimen/x20"
+    android:layout_marginTop="@dimen/x10"
+    android:layout_toRightOf="@id/img_book"
+    android:text="语文五年级下册"
+    android:id="@+id/text_title_two"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+<LinearLayout
+    android:background="@drawable/img_blue"
+    android:id="@+id/liner_type_ground"
+    android:layout_toRightOf="@id/img_book"
+    android:layout_below="@id/text_title_two"
+    android:layout_marginTop="@dimen/x20"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:textColor="@color/white"
+        android:textSize="@dimen/x15"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="编辑中"
+        android:id="@+id/text_type"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
+
+<ProgressBar
+    android:id="@+id/progress_bar"
+    android:progress="30"
+    android:max="100"
+    android:layout_marginLeft="@dimen/x10"
+    android:layout_marginTop="@dimen/x50"
+    android:layout_below="@id/liner_type_ground"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_toRightOf="@id/img_book"
+    android:layout_width="@dimen/x145"
+    android:layout_height="@dimen/x14"
+    android:progressDrawable="@drawable/progressbar_bg" />
+</RelativeLayout>
+</LinearLayout>

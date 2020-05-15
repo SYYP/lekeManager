@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/x362"
+        android:layout_marginRight="@dimen/x310"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:gravity="left"
+                android:text="图书名称："></TextView>
+
+            <TextView
+                android:id="@+id/text_booktitle"
+                style="@style/book_title_color"
+                android:text="语文五年级下册"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="学科："></TextView>
+
+            <TextView
+                android:id="@+id/text_subject"
+                style="@style/book_title_color"
+                android:text="语文"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="图书类型："></TextView>
+
+            <TextView
+                android:id="@+id/text_book_type"
+                style="@style/book_title_color"
+                android:text="课本"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="年级："></TextView>
+
+            <TextView
+                android:id="@+id/text_grade"
+                style="@style/book_title_color"
+                android:text="二年级上册"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="教材版本："></TextView>
+
+            <TextView
+                android:id="@+id/text_project"
+                style="@style/book_title_color"
+                android:text="人教版"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="出版社："></TextView>
+
+            <TextView
+                android:id="@+id/text_cyan"
+                style="@style/book_title_color"
+                android:text="北京出版社"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="图书编号："></TextView>
+
+            <TextView
+                android:id="@+id/text_number"
+                style="@style/book_title_color"
+                android:text="8527426301"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="ISBN："></TextView>
+
+            <TextView
+                android:id="@+id/text_isbn"
+                style="@style/book_title_color"
+                android:text="二年级上册"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="关键字："></TextView>
+
+            <TextView
+                android:id="@+id/text_keyword"
+                style="@style/book_title_color"
+                android:text="暂无"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="印次："></TextView>
+
+            <TextView
+                android:id="@+id/text_yins"
+                style="@style/book_title_color"
+                android:text="暂无"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="版次："></TextView>
+
+            <TextView
+                android:id="@+id/text_banc"
+                style="@style/book_title_color"
+                android:text="暂无"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x20"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/book_title_color"
+                android:layout_width="@dimen/x120"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="原价："></TextView>
+
+            <TextView
+                android:id="@+id/text_yuanj"
+                style="@style/book_title_color"
+                android:text="暂无"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+    <!--titleBar-->
+    <!--顶部章节题目选择按钮栏-->
+    <RelativeLayout
+        android:id="@+id/top_btn_bar1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y66"
+        android:layout_marginTop="2px"
+        android:background="@android:color/white">
+
+        <TextView
+            android:drawablePadding="@dimen/x8"
+            android:gravity="center"
+            android:drawableLeft="@drawable/img_question_back"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x24"
+            android:text="题库"
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/img_refush"
+            android:layout_marginLeft="@dimen/x26"
+            android:layout_toRightOf="@id/img_back"
+           android:src="@drawable/img_question_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!--上一个XX按钮-->
+        <LinearLayout
+            android:id="@+id/last_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="30px"
+            android:layout_toLeftOf="@+id/question_choose_btn"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="30px">
+
+            <TextView
+                android:layout_width="@dimen/x65"
+                android:layout_height="@dimen/y65"
+                android:background="@drawable/img_question_previous" />
+
+            <TextView
+                android:id="@+id/last_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:text="上一题"
+                android:textColor="@android:color/black"
+                android:textSize="24px"
+                android:visibility="gone" />
+        </LinearLayout>
+        <!--本章题目选择按钮-->
+        <LinearLayout
+            android:id="@+id/question_choose_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/question_choose_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="XX的定义(X/X)"
+                android:textColor="@android:color/black"
+                android:textSize="30px" />
+
+            <TextView
+                android:layout_width="18px"
+                android:layout_height="10px"
+                android:layout_marginLeft="10px"
+                android:background="@drawable/img_timu_down" />
+        </LinearLayout>
+        <!--下一个XX按钮-->
+        <LinearLayout
+            android:id="@+id/next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30px"
+            android:layout_toRightOf="@+id/question_choose_btn"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingRight="30px">
+
+            <TextView
+                android:id="@+id/next_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10px"
+                android:text="下一题"
+                android:textColor="@android:color/black"
+                android:textSize="24px"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="@dimen/x65"
+                android:layout_height="@dimen/y65"
+                android:background="@drawable/img_question_next" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/real_jix"
+            android:orientation="vertical"
+
+            android:layout_alignParentRight="true"
+            android:background="@drawable/img_question_analysis"
+            android:layout_width="@dimen/x65"
+            android:layout_height="@dimen/y65">
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="@dimen/x18"
+                android:text="@string/string_jiex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginRight="@dimen/x20"
+            android:id="@+id/real_ml"
+            android:orientation="vertical"
+
+          android:layout_toLeftOf="@id/real_jix"
+            android:background="@drawable/img_question_catalog"
+            android:layout_width="@dimen/x65"
+            android:layout_height="@dimen/y65">
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="@dimen/x18"
+                android:text="@string/string_ml"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <!--下方显示区域-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/top_btn_bar1"
+        android:layout_marginTop="2px"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+        <!--题干解答按钮栏-->
+        <!--<LinearLayout
+            android:id="@+id/btn_bar_2"
+            android:layout_width="match_parent"
+            android:layout_height="60px"
+            android:background="@android:color/black">
+            &lt;!&ndash;题干按钮&ndash;&gt;
+            <TextView
+                android:id="@+id/question_body_btn"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/background_press_green_normal_white_selector"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="题干"
+                android:textColor="@drawable/color_selector_press_white_normal_black"
+                android:textSize="24px" />
+            &lt;!&ndash;解答按钮&ndash;&gt;
+            <TextView
+                android:id="@+id/answer_analysis_btn"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2px"
+                android:layout_marginRight="1px"
+                android:layout_weight="1"
+                android:background="@drawable/background_press_green_normal_white_selector"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="解答"
+                android:textColor="@drawable/color_selector_press_white_normal_black"
+                android:textSize="24px" />
+        </LinearLayout>-->
+
+        <!--问答信息显示条-->
+        <LinearLayout
+            android:id="@+id/btn_bar_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <!--装饰色块-->
+            <View
+                android:id="@+id/color_block"
+                android:layout_width="4px"
+                android:layout_height="26px"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="14px"
+                android:background="@drawable/bmp_bg_green" />
+            <!--开始时间-->
+            <TextView
+                android:id="@+id/start_time_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15px"
+                android:layout_marginTop="12px"
+                android:text="问答开始时间：xxxxxxx"
+                android:textColor="@android:color/black"
+                android:textSize="22px" />
+            <!--已用时间-->
+            <TextView
+                android:id="@+id/spend_time_tv"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="12px"
+                android:layout_weight="1"
+                android:text="已用时：xxxxxxx"
+                android:textColor="@android:color/black"
+                android:textSize="22px" />
+        </LinearLayout>
+
+        <!--题目作答笔记主显示控件-->
+        <ImageView
+            android:id="@+id/main_content_display"
+            android:layout_width="960px"
+            android:layout_height="1148px"
+            android:background="@android:color/white" />
+
+    </LinearLayout>
+
+    <!--点击章节名弹出的题目选择控件-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/question_choose_rcv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_btn_bar1"
+        android:layout_marginTop="2px"
+        android:background="@android:color/white"
+        android:visibility="gone" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <!--学生选择判断题选项栏-->
+        <FrameLayout
+            android:id="@+id/answer_btn_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+            <!--选择题选项-->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rcv_chooese_item"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
+            <!--判断题选项-->
+            <LinearLayout
+                android:id="@+id/ll_chooese_item"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <!--错误选项-->
+                    <RadioButton
+                        android:id="@+id/rb_error"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:button="@drawable/rb_result_selector"
+                        android:onClick="onClick"
+                        android:text=" 错误（x）"
+                        android:textSize="28px" />
+                    <!--正确选项-->
+                    <RadioButton
+                        android:id="@+id/rb_right"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="200dp"
+                        android:button="@drawable/rb_result_selector"
+                        android:onClick="onClick"
+                        android:text=" 正确（√）"
+                        android:textSize="28px" />
+                </RadioGroup>
+            </LinearLayout>
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60px">
+
+            <!--页码按钮栏-->
+            <com.frank.etude.pageable.PageBtnBar
+                android:id="@+id/page_btn_bar"
+                android:layout_width="match_parent"
+                android:layout_height="60px"
+                android:background="@android:color/white"
+                android:orientation="horizontal" />
+
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

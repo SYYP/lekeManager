@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/y460"
+        android:background="@drawable/img_book_background">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y60">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/img_book_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/x15"
+                android:layout_toRightOf="@id/img_back"
+                android:gravity="center"
+                android:text="@string/string_book"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x30" />
+
+            <ImageView
+                  android:id="@+id/img_refush"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/x80"
+                android:layout_toRightOf="@id/img_back"
+                android:src="@drawable/img_main_shuax" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_books"
+            android:layout_width="@dimen/x190"
+            android:layout_height="@dimen/y252"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y75"
+            android:maxWidth="@dimen/x214"
+            android:maxHeight="@dimen/y274"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_books"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y20"
+            android:text="书名:北京版语文"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x24" />
+
+        <TextView
+            android:id="@+id/text_auther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/x15"
+            android:text="作者:"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x24" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/y80"
+        android:layout_marginLeft="@dimen/x275"
+        android:layout_marginRight="@dimen/x275">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_xq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x35"
+                android:text="@string/string_xq"
+                android:textSize="@dimen/x25" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/x5"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:background="@drawable/img_xiahua"></View>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x120"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_jjie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x35"
+                android:text="@string/string_jianj"
+                android:textSize="@dimen/x25" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/x5"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:background="@drawable/img_xiahua"
+                android:visibility="invisible"></View>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x120"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_ml"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x35"
+                android:text="@string/string_ml"
+                android:textSize="@dimen/x25" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/x5"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:background="@drawable/img_xiahua"
+                android:visibility="invisible"></View>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x2"
+        android:background="@color/gray"></View>
+
+    <FrameLayout
+        android:id="@+id/fram_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+</LinearLayout>

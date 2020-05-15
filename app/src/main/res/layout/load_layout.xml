@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_transparen">
+
+    <TextView
+        android:id="@+id/tv_loadingMsg"
+        android:layout_width="@dimen/x400"
+        android:layout_height="@dimen/y200"
+        android:layout_gravity="center"
+        android:background="@drawable/img_dialog_loading_backgroud"
+        android:gravity="center"
+        android:text="请稍候....."
+        android:textColor="@color/black"
+        android:textSize="@dimen/x40"
+        android:textStyle="bold" />
+</FrameLayout>

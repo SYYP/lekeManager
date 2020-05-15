@@ -1,6 +1,7 @@
 package www.manager.leke.com.lekemanager.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import de.greenrobot.event.EventBus;
+import www.manager.leke.com.lekemanager.bean.BaseEvent;
 import www.manager.leke.com.lekemanager.bean.BookVoiceBean;
 import www.manager.leke.com.lekemanager.dialog.LoadingProgressDialog;
 import www.manager.leke.com.lekemanager.dialog.ShowTextDialog;
@@ -41,8 +44,9 @@ public abstract class BaseFragmentActivity extends RxAppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mActivities.add(this);
+        EventBus.getDefault().register(this);
         setContentView(layout());
         unbind = ButterKnife.bind(this);
         processExtraData();
@@ -51,6 +55,11 @@ public abstract class BaseFragmentActivity extends RxAppCompatActivity {
         loadData();
     }
 
+    public void onEventMainThread(BaseEvent event) {
+        if (event == null) {
+            return;
+        }
+    }
 
     @Override
     protected void onResume() {
@@ -72,7 +81,10 @@ public abstract class BaseFragmentActivity extends RxAppCompatActivity {
 
     //加载数据
     public abstract void loadData();
-
+    public static Context getContext() {
+        return BaseFragmentActivity.getForegroundActivity();
+//        return weakReference.get();
+    }
     public View inflate(int resId) {
         LayoutInflater inflater = LayoutInflater.from(this);
         return inflater.inflate(resId, null);
@@ -173,13 +185,13 @@ public abstract class BaseFragmentActivity extends RxAppCompatActivity {
      *  显示加载框
      */
     public void showTextDialog(String str) {
-        if (mShowTextDialog == null) {
-            mShowTextDialog = new ShowTextDialog(this);
-        }
-        if (!mShowTextDialog.isShowing()) {
-            mShowTextDialog.show();
-            mShowTextDialog.setMsg(str);
-        }
+//        if (mShowTextDialog == null) {
+//            mShowTextDialog = new ShowTextDialog(this);
+//        }
+//        if (!mShowTextDialog.isShowing()) {
+//            mShowTextDialog.show();
+//            mShowTextDialog.setMsg(str);
+//        }
     }
 
     /***
@@ -224,6 +236,7 @@ public abstract class BaseFragmentActivity extends RxAppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unbind.unbind();
+        EventBus.getDefault().unregister(this);
         mActivities.remove(this);
     }
 
@@ -242,7 +255,11 @@ public abstract class BaseFragmentActivity extends RxAppCompatActivity {
         }
         return null;
     }
-
+    public void startIntentWithExtras(Class<?> cls, Bundle extras) {
+        Intent intent = new Intent(this, cls);
+        intent.putExtras(extras);
+        startActivity(intent);
+    }
     /**
      * 关闭所有Activity
      */

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="autoWrapLineLayout">
+        <attr name="horizontalMargin" format="integer"/>
+        <attr name="verticalMargin" format="integer"/>
+        <attr name="fillMode" format="integer"/>
+    </declare-styleable>
+
+    <!-- 末行对齐方式 -->
+    <declare-styleable name="AlignTextView">
+        <attr name="align" format="enum">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="RoundProgressBar">
+        <attr name="max" format="integer"/>
+        <attr name="progress" format="integer"/>
+        <attr name="roundColor" format="reference|color"/>
+        <attr name="roundProgressColor" format="reference|color"/>
+        <attr name="roundDrawable" format="reference"/>
+        <attr name="textColor" format="reference|color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="text" format="string"/>
+        <attr name="roundWidth" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="LoadSignLayout" >
+        <attr name="type" format="integer"/>
+    </declare-styleable>
+</resources>

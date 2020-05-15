@@ -35,7 +35,9 @@ public class SpUtils {
     }
 
 
-
+    public static String getString(String key) {
+        return  getSharedPreferences().getString(key, "");
+    }
     public static String getString(String key, String defaultValue) {
         return getSharedPreferences().getString(key, defaultValue);
     }

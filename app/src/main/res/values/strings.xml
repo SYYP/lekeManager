@@ -13,4 +13,31 @@
     <string name="string_xiaodui">校对</string>
     <string name="string_shengk">审核</string>
     <string name="string_pause">取消</string>
+    <string name="string_Toupdate">检查更新</string>
+    <string name="string_book_message">图书信息</string>
+    <string name="string_look_pdf">查看PDF</string>
+    <string name="string_ok">提交</string>
+    <string name="string_examine_ok">审核通过</string>
+    <string name="string_proofread">校对通过</string>
+    <string name="string_xq">详情</string>
+    <string name="string_jianj">简介</string>
+    <string name="string_ml">目录</string>
+    <string name="string_xians">切换线上环境</string>
+    <string name="string_ces">切换测试环境</string>
+    <string name="string_shengj">软件升级</string>
+    <string name="string_pwd">修改密码</string>
+    <string name="string_end">退出登录</string>
+    <string name="string_old">原密码</string>
+    <string name="string_sure">确定</string>
+    <string name="string_position">位置查阅</string>
+    <string name="string_lookquestion">题库信息</string>
+    <string name="string_read_preview">点读预览</string>
+    <string name="string_look_question">查看习题</string>
+    <string name="string_jiex">解析</string>
+    <string name="string_more">更多</string>
+    <string name="string_pdf_update">检查PDF更新</string>
+    <string name="string_read_update">点读更新</string>
+    <string name="string_position_read">点读位置查阅</string>
+    <string name="no_net">当前没有网络,请链接网络</string>
+
 </resources>

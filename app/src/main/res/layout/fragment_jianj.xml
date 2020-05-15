@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@null"
+    android:layout_height="match_parent">
+
+
+   <www.manager.leke.com.lekemanager.view.AlignTextView
+       android:text="我们常见的“死飞”，只是单速自行车的一种，而“死飞”的命名，
+       其实是来源于其后飞轮的结构。“死飞”的结构：大多数自行车，
+       在传动系统位于后轮部分的飞轮（或后花鼓，即后轴）内部，
+       拥有一套具有离合结构的棘轮，当车轮空转时，
+       这个棘轮结构可以使我们的双脚不必在骑行时一直处于蹬踏的状态：
+       而“死飞”自行车的飞轮则仅仅是一片铸造或削切而成的“齿轮片”，
+       不具有内部的棘轮结构，所以，骑行者的双腿在行进中会一直处于蹬踏状态。而且，
+       无论是向前还是向后踩踏，“死飞”车均可以向相应方向移动。也就是说，除非速度为0，
+       否则在“死飞”上，骑行者的双脚永远无法静止，而是一直处于蹬踏的状态。
+       现代“死飞”车起源于场地自行车（Track Bike），也就是奥运会等专业竞赛中，
+       赛手们骑着完全为追求速度而设计的，在环形封闭式单车赛道中高速追逐行驶的那类自行车。
+       这类专业竞赛用的“死飞”自行车在比赛时是不会安装刹车装置的，
+       由于其传动结构的特殊性，车手通常依靠双脚对传动系统的反方向发力来进行减速。"
+       android:textColor="@color/book_title_color"
+       android:textSize="@dimen/x24"
+       android:layout_marginLeft="@dimen/x30"
+       android:id="@+id/text_introduction"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginTop="@dimen/x20"
+       android:layout_marginRight="@dimen/x30"/>
+</ScrollView>

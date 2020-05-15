@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_fail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/img_fail"
+        android:layout_width="@dimen/x431"
+        android:layout_height="@dimen/y198"
+        android:background="@null"
+        android:src="@drawable/img_load_topic_fail" />
+
+    <TextView
+
+        android:gravity="center"
+        android:id="@+id/tv_failMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y40"
+        android:text="暂时没有数据！"
+        android:textColor="@color/black"
+        android:textSize="@dimen/x25" />
+
+
+
+
+</LinearLayout>

@@ -8,4 +8,8 @@
     <color name="text_color">#999999</color>
     <color name="black">#000000</color>
     <color name="back_ground">#dbdbdb</color>
+    <color name="book_list_color">#ff999999</color>
+    <color name="book_title_color">#333333</color>
+    <color name="my_background">#99ececec</color>
+    <color name="color_transparen">#00000000</color>
 </resources>

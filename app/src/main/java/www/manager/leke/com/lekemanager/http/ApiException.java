@@ -1,21 +1,41 @@
 package www.manager.leke.com.lekemanager.http;
 
+/**
+ * 功能：自定义网络请求异常
+ * 作者: YUAN_YE
+ * 日期: 2019/4/23
+ * 时间: 10:31
+ */
 public class ApiException extends Exception {
-    String ResultMessage;
-    String ResultCode;
+    String resultMessage;
+    int resultCode;
+    Object extraData;
 
-    public ApiException(String resultCode, String resultMessage) {
-        ResultMessage = resultMessage;
-        ResultCode = resultCode;
+    public ApiException(int resultCode, String resultMessage , Object extraData) {
+        this.resultMessage = resultMessage;
+        this.resultCode = resultCode;
+        this.extraData = extraData;
     }
 
     @Override
     public String getMessage() {
-        return ResultMessage;
+        return resultMessage;
     }
 
-    public String getCode() {
-        return ResultCode;
+    public int getCode() {
+        return resultCode;
+    }
+
+    public Object getExtraData(){
+        return extraData;
+    }
+
+    @Override
+    public String toString() {
+        return "ApiException{" +
+                "resultMessage='" + resultMessage + '\'' +
+                ", resultCode='" + resultCode + '\'' +
+                ", extraData=" + extraData +
+                '}';
     }
 }
-
