@@ -18,7 +18,7 @@ public class AliOssInfo {
     private String securityToken;
     //bean.getExpiration()
     private String expiration;
-    private String endpoint = HtppConfiguration.ENDPOINT;
+    private String endpoint="https://oss-cn-shanghai.aliyuncs.com" ;
     //ean.getAtchBucket()
     private String bucketName;
     //bean.getAtchRemotePath()
@@ -31,8 +31,14 @@ public class AliOssInfo {
     private String savePath;
     private String fileType;
 
+
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
+    }
+
     public String getEndpoint() {
         return endpoint;
+
     }
 
     public String getAccessKeyId() {
@@ -83,6 +89,7 @@ public class AliOssInfo {
 
     public void setObjectKey(String objectKey) {
         this.objectKey = objectKey;
+//        this.objectKey = "leke/book/download/1590113490000yMFMNS4sY2Sf.pdf";
     }
 
     public String getSavePath() {

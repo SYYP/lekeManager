@@ -42,7 +42,7 @@ public class LogUtils {
     /**
      * 日志输出时的TAG
      */
-    private static String mTag = "ReadDemo";
+    private static String mTag = "LekeManager";
     //==========================================================================
     // get、set方法
     //==========================================================================

@@ -14,6 +14,7 @@ import rx.functions.Action1;
 import www.manager.leke.com.lekemanager.R;
 import www.manager.leke.com.lekemanager.adapter.MainRecyclerAdapter;
 import www.manager.leke.com.lekemanager.adapter.PointReadRecyclerAdapter;
+import www.manager.leke.com.lekemanager.bean.BaseEvent;
 import www.manager.leke.com.lekemanager.bean.MainBookMessageBean;
 import www.manager.leke.com.lekemanager.http.ApiException;
 import www.manager.leke.com.lekemanager.http.HttpManager;
@@ -80,10 +81,11 @@ public class ReadFragment extends MainFragment {
                 @Override
                 public void call(Pair<Integer, List<MainBookMessageBean>> integerListPair) {
                     List<MainBookMessageBean> second = integerListPair.second;
-                    if (second.isEmpty()) {
+                    if (second!=null&&second.isEmpty()) {
                         includeFail.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                     } else {
+                        mMainBookMessageBeanList.clear();
                         mMainBookMessageBeanList.addAll(second);
                         recyclerView.setVisibility(View.VISIBLE);
                         includeFail.setVisibility(View.GONE);
@@ -104,4 +106,13 @@ public class ReadFragment extends MainFragment {
         }
     }
 
+    @Override
+    public void onEventMainThread(BaseEvent event) {
+        super.onEventMainThread(event);
+        switch (event.getType()){
+            case Contacts.BOOKREAD:
+                netWorkAudioData(audioStatus);
+                break;
+        }
+    }
 }

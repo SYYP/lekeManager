@@ -2,10 +2,7 @@ package www.manager.leke.com.lekemanager.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.util.ArrayMap;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -17,41 +14,28 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import de.greenrobot.event.EventBus;
 import rx.functions.Action1;
 import www.manager.leke.com.lekemanager.R;
 import www.manager.leke.com.lekemanager.activity.BookActiivty;
 import www.manager.leke.com.lekemanager.activity.ReadPdfBookActivity;
-import www.manager.leke.com.lekemanager.base.BaseFragmentActivity;
 import www.manager.leke.com.lekemanager.bean.BaseEvent;
-import www.manager.leke.com.lekemanager.bean.Ceshibean;
 import www.manager.leke.com.lekemanager.bean.MainBookMessageBean;
 import www.manager.leke.com.lekemanager.bean.OpenBookInfo;
 import www.manager.leke.com.lekemanager.bean.SumbitBookStatus;
-import www.manager.leke.com.lekemanager.configuration.GlobalConstant;
 import www.manager.leke.com.lekemanager.dialog.BaseDialogs;
 import www.manager.leke.com.lekemanager.dialog.DialogUtils;
-import www.manager.leke.com.lekemanager.fragment.BookFragment;
 import www.manager.leke.com.lekemanager.http.ApiException;
 import www.manager.leke.com.lekemanager.http.HttpManager;
-import www.manager.leke.com.lekemanager.manager.AppManager;
-import www.manager.leke.com.lekemanager.manager.DownOssManager;
-import www.manager.leke.com.lekemanager.manager.DownVoiceView;
 import www.manager.leke.com.lekemanager.manager.OpenReaderUtils;
-import www.manager.leke.com.lekemanager.manager.ThreadManager;
 import www.manager.leke.com.lekemanager.utils.CodeValueUtils;
 import www.manager.leke.com.lekemanager.utils.Contacts;
-import www.manager.leke.com.lekemanager.utils.FileUtils;
 import www.manager.leke.com.lekemanager.utils.GsonUitls;
 import www.manager.leke.com.lekemanager.utils.ImageLoader;
-import www.manager.leke.com.lekemanager.utils.LogUtils;
 import www.manager.leke.com.lekemanager.utils.NetUtils;
 import www.manager.leke.com.lekemanager.utils.SpUtils;
-import www.manager.leke.com.lekemanager.utils.StringUtils;
 import www.manager.leke.com.lekemanager.utils.ToastUtils;
 import www.manager.leke.com.lekemanager.utils.UIUtils;
 
@@ -93,15 +77,16 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         holder.text_title_two.setText(mainBookMessageBean.getBookDisplayTitle());//副标题
         String codeValues = CodeValueUtils.getInstance().getCodeValues(mainBookMessageBean.getBookStatus());
         holder.text_type.setText(codeValues);//状态值
+        holder.liner_type_ground.setBackground(mContext.getResources().getDrawable(R.drawable.shape_background_black));
         if (codeValues.equals(Contacts.BA02) || codeValues.equals(Contacts.BA03)) {
-            holder.text_type.setBackground(mContext.getResources().getDrawable(R.drawable.img_cyan));
+
             //最后一个按钮的字体显示
             holder.text_name.setText(UIUtils.getString(R.string.string_ok));
         } else if (codeValues.equals(Contacts.BA05)) {
-            holder.liner_type_ground.setBackground(mContext.getResources().getDrawable(R.drawable.img_orange));
+
             holder.text_name.setText(UIUtils.getString(R.string.string_proofread));
         } else {
-            holder.liner_type_ground.setBackground(mContext.getResources().getDrawable(R.drawable.img_blue));
+
             holder.text_name.setText(UIUtils.getString(R.string.string_examine_ok));
         }
         ImageLoader.getInstance().loadTeachBook(mContext, holder.img_book, mainBookMessageBean.getCoverLAtchRemotePath(), true);
@@ -139,7 +124,6 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
                         if (holder.text_name.getText().toString().equals(UIUtils.getString(R.string.string_proofread))) {
                             mDialogUtils.setTitle("校对通过 ?");
                             mDialogUtils.XiaoduiDialog();
-
                             mDialogUtils.setXiaodOnClick(new DialogUtils.XiaodOnClick() {
                                 @Override
                                 public void OnClickListener(BaseDialogs mDialogs) {
@@ -169,7 +153,12 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         holder.fram_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showUpdateBook(position);
+               new OpenReaderUtils(new OpenBookInfo()
+                       .setBookId(mainBookMessageBean.getBookId())
+                       .setAutoOpean(false)
+                       .setProgressg(true)
+
+               ).openReader();
 
             }
         });
@@ -184,12 +173,12 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, BookActiivty.class);
+                intent.putExtra(Contacts.BOOKID,mainBookMessageBean.getBookId());
                 mContext.startActivity(intent);
             }
         });
 
     }
-
 
     //提交请求/校对请求，审核请求
     private void NetworkSubmit(MainBookMessageBean mainBookMessageBean, String booStatus, String nEditText) {

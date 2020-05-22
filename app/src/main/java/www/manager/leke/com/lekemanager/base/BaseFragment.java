@@ -92,6 +92,8 @@ public abstract class BaseFragment extends RxFragment {
         return mRootView;
     }
 
+
+
     /**
      * onActivityCreate: Activity 的 UI 控件.
      * <p>

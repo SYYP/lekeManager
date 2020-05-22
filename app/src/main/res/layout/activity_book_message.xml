@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/liner_all"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -42,35 +43,43 @@
         </LinearLayout>
 
         <ImageView
+
             android:id="@+id/img_books"
             android:layout_width="@dimen/x190"
             android:layout_height="@dimen/y252"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/y75"
-            android:maxWidth="@dimen/x214"
-            android:maxHeight="@dimen/y274"
             android:scaleType="fitXY"
             android:src="@drawable/ic_launcher_background" />
-
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/img_books_big"
+            android:layout_width="@dimen/x214"
+            android:layout_height="@dimen/y274"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y65"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_background" />
         <TextView
             android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/img_books"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/y20"
-            android:text="书名:北京版语文"
+           android:layout_marginBottom="@dimen/x70"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="@dimen/x24" />
 
         <TextView
+            android:layout_alignParentBottom="true"
             android:id="@+id/text_auther"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_title"
+             android:layout_marginBottom="@dimen/x30"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/x15"
-            android:text="作者:"
+
+            android:text=""
             android:textColor="@color/white"
             android:textSize="@dimen/x24" />
     </RelativeLayout>

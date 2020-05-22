@@ -9,8 +9,14 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.functions.Action1;
 import www.manager.leke.com.lekemanager.R;
 import www.manager.leke.com.lekemanager.base.BaseFragmentActivity;
+import www.manager.leke.com.lekemanager.http.ApiException;
+import www.manager.leke.com.lekemanager.http.HttpManager;
+import www.manager.leke.com.lekemanager.utils.Contacts;
+import www.manager.leke.com.lekemanager.utils.NetUtils;
+import www.manager.leke.com.lekemanager.utils.SpUtils;
 import www.manager.leke.com.lekemanager.utils.UIUtils;
 
 /**
@@ -40,8 +46,6 @@ public class ReviseActivity extends BaseFragmentActivity {
     @Override
     public void loadData() {
 
-
-
            //添加数据
           btnSure.setOnClickListener(new View.OnClickListener() {
               @Override
@@ -67,11 +71,37 @@ public class ReviseActivity extends BaseFragmentActivity {
                   }
                   if(!(surePwd.equals(newPwd))){
                       showToast("两次密码不一致");
+                      return;
                   }
 
-
+                 netWorkData(oldPwd,newPwd);//网络请求
               }
           });
+    }
+
+    private void netWorkData( String oldPwd,String newPwd) {
+         if(NetUtils.isWifiConnected()) {
+             HttpManager.getInstace().getRevisePwd(oldPwd, newPwd)
+                     .subscribe(new Action1<Object>() {
+                         @Override
+                         public void call(Object o) {
+                             SpUtils.putString(Contacts.ACCOUNT,"");
+                             SpUtils.putString(Contacts.PASSWORD,"");
+                             showToast("修改成功");
+                             finish();
+                         }
+                     }, new Action1<Throwable>() {
+                         @Override
+                         public void call(Throwable throwable) {
+
+                             if (throwable instanceof ApiException) {
+                                 UIUtils.showToastSafe(throwable.getMessage());
+                             }
+                         }
+                     });
+         }else {
+             UIUtils.showToastSafe(R.string.no_net);
+         }
     }
 
     @Override

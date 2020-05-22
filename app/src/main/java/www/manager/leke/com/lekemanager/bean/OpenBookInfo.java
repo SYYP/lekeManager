@@ -13,7 +13,7 @@ public class OpenBookInfo implements Parcelable {
 
     //是否显示下载进度条dialog
     private boolean isProgress;
-    private String bookId;
+    private Integer bookId;
     private String type;
     private String imgUrl;
     private String bookTitle;
@@ -30,11 +30,11 @@ public class OpenBookInfo implements Parcelable {
     }
 
 
-    public String getBookId() {
+    public Integer getBookId() {
         return bookId;
     }
 
-    public OpenBookInfo setBookId(String bookId) {
+    public OpenBookInfo setBookId(Integer bookId) {
         this.bookId = bookId;
         return this;
     }
@@ -111,7 +111,7 @@ public class OpenBookInfo implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte(this.isProgress ? (byte) 1 : (byte) 0);
-        dest.writeString(this.bookId);
+        dest.writeInt(this.bookId);
         dest.writeString(this.type);
         dest.writeString(this.imgUrl);
         dest.writeString(this.bookTitle);
@@ -121,7 +121,7 @@ public class OpenBookInfo implements Parcelable {
 
     protected OpenBookInfo(Parcel in) {
         this.isProgress = in.readByte() != 0;
-        this.bookId = in.readString();
+        this.bookId = in.readInt();
         this.type = in.readString();
         this.imgUrl = in.readString();
         this.bookTitle = in.readString();

@@ -21,6 +21,15 @@ public class BookOssBean {
         protected String atchRemotePath;
         protected String atchBucket;
         protected String atchMd5;
+        private  String region;
+
+        public String getRegion() {
+            return region;
+        }
+
+        public void setRegion(String region) {
+            this.region = region;
+        }
 
         public String getDeviceModelCode() {
             return deviceModelCode;

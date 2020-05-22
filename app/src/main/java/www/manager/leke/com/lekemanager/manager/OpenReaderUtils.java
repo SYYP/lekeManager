@@ -3,6 +3,7 @@ package www.manager.leke.com.lekemanager.manager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.yanzhenjie.nohttp.tools.NetUtils;
@@ -86,10 +87,11 @@ public class OpenReaderUtils {
     }
 
     private void getBookOss() {
-        HttpManager.getInstace().getBookOss(Integer.parseInt(mInfo.getBookId()), SystemUtils.getDeviceModel()).subscribe(bookOssBean -> {
+        HttpManager.getInstace().getBookOss(mInfo.getBookId(), SystemUtils.getDeviceModel()).subscribe(bookOssBean -> {
             if (bookOssBean != null) {
                 mOss = bookOssBean;
                 checkLocalMedia();
+                Log.d(TAG,mOss.toString());
             } else {
                 LogUtils.e(TAG, "BookOssBean = null");
                 UIUtils.showToastSafe("该书已下架", Toast.LENGTH_LONG);
@@ -106,7 +108,7 @@ public class OpenReaderUtils {
         if (mInfo.isAutoOpean()) {
             if (null != BaseFragmentActivity.getForegroundActivity()) {
                 Bundle extras = new Bundle();
-                // extras.putParcelable(ReaderAndWriteFragmentAcvity.class.getName(), mInfo);
+                extras.putParcelable(ReadPdfBookActivity.class.getName(), mInfo);
                 BaseFragmentActivity.getForegroundActivity().startIntentWithExtras(ReadPdfBookActivity.class, extras);
             }
         } else {
@@ -117,10 +119,10 @@ public class OpenReaderUtils {
                 mOss.getDataPackUrlInfo().getExpiration();
             }
             if (mDialogUtils == null) {
-                mDialogUtils.showUpdateBook();
                 mDialogUtils.setTitle("暂无更新");
                 mDialogUtils.setTime("最后更新时间：" + time);
                 mDialogUtils.setBtnName("知道了");
+                mDialogUtils.showUpdateBook();
                 mDialogUtils.setBookOnClick(new DialogUtils.BookOnClick() {
                     @Override
                     public void OnClickListener(BaseDialogs mDialogs) {
@@ -143,6 +145,7 @@ public class OpenReaderUtils {
         ossInfo.setExpiration(mOss.getDataPackUrlInfo().getExpiration());
         ossInfo.setBucketName(mOss.getDataPackUrlInfo().getAtchBucket());
         ossInfo.setObjectKey(mOss.getDataPackUrlInfo().getAtchRemotePath());
+        //ossInfo.setEndpoint(Contacts.OSSPATH+mOss.getDataPackUrlInfo().getRegion());
 
         ossInfo.setFileType("book");
         ossInfo.setSavePath(FileUtil.getReaderPath() + mInfo.getBookId() + ".pdf");
@@ -164,6 +167,7 @@ public class OpenReaderUtils {
         ossInfo.setExpiration(mOss.getAudioDataUrlInfo().getExpiration());
         ossInfo.setBucketName(mOss.getAudioDataUrlInfo().getAtchBucket());
         ossInfo.setObjectKey(mOss.getAudioDataUrlInfo().getAtchRemotePath());
+        ossInfo.setEndpoint(Contacts.OSSPATH+mOss.getAudioDataUrlInfo());
 
         ossInfo.setFileType("audio");
         ossInfo.setSavePath(FileUtil.getAudioPath() + mInfo.getBookId() + ".zip");
@@ -182,6 +186,7 @@ public class OpenReaderUtils {
         ossInfo.setExpiration(mOss.getAudioConfigUrlInfo().getExpiration());
         ossInfo.setBucketName(mOss.getAudioConfigUrlInfo().getAtchBucket());
         ossInfo.setObjectKey(mOss.getAudioConfigUrlInfo().getAtchRemotePath());
+        ossInfo.setEndpoint(Contacts.OSSPATH+mOss.getAudioConfigUrlInfo().getRegion());
         ossInfo.setFileType("configure");
         ossInfo.setSavePath(FileUtil.getConfigurePath() + mInfo.getBookId() + ".zip");
         OssManager.getInstance().asyDownFile(ossInfo, new ConfigOssListenerImp("配置"));
@@ -213,7 +218,6 @@ public class OpenReaderUtils {
                 }
                 mPrgDg = null;
             }
-
             if (mFlagOpenState) {
                 jump();
             }
@@ -358,7 +362,7 @@ public class OpenReaderUtils {
             mPrgDg = new ProgressDialog(BaseFragmentActivity.getContext()) {
                 @Override
                 public void cancel() {
-                    OssManager.getInstance().cancel(mInfo.getBookId());
+                    OssManager.getInstance().cancel(String.valueOf(mInfo.getBookId()));
                 }
             };
         }
@@ -428,8 +432,10 @@ public class OpenReaderUtils {
     private void doFileBooks() {
         if (mDialogUtils == null)
             mDialogUtils = new DialogUtils(BaseFragmentActivity.getForegroundActivity());
-        mDialogUtils.showUpdateBook();
+        mDialogUtils.setTitle("PDF更新，是否下载新版本？");
+        mDialogUtils.setBtnName("点击更新");
         mDialogUtils.setTime(mOss.getDataPackUrlInfo().getExpiration());
+        mDialogUtils.showUpdateBook();
         mDialogUtils.setBookOnClick(new DialogUtils.BookOnClick() {
             @Override
             public void OnClickListener(BaseDialogs mDialogs) {
@@ -518,9 +524,11 @@ public class OpenReaderUtils {
     private void doFileConfigs() {
         if (mDialogUtils == null)
             mDialogUtils = new DialogUtils(BaseFragmentActivity.getForegroundActivity());
-        mDialogUtils.showUpdateBook();
         mDialogUtils.setTitle("点读文件有更新，是否更新新版本？");
         mDialogUtils.setTime(mOss.getAudioConfigUrlInfo().getExpiration());
+        mDialogUtils.setBtnName("点击更新");
+        mDialogUtils.showUpdateBook();
+
         mDialogUtils.setBookOnClick(new DialogUtils.BookOnClick() {
             @Override
             public void OnClickListener(BaseDialogs mDialogs) {

@@ -102,12 +102,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </com.meetsl.scardview.SCardView>
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_tou"
-        android:src="@mipmap/ic_launcher"
-        android:layout_width="@dimen/x180"
-        android:layout_height="@dimen/x180"
+    <RelativeLayout
+        android:id="@+id/real_tou"
+      android:background="@drawable/shape_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/y308"
-        />
+        android:layout_marginTop="@dimen/y315"
+
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_tou"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_login_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:textColor="@color/black"
+        android:textSize="@dimen/x30"
+        android:layout_marginTop="@dimen/x25"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/real_tou"
+        android:text="融捷智慧教学管理端"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

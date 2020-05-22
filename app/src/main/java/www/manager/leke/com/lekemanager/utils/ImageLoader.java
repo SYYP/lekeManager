@@ -47,4 +47,24 @@ public class ImageLoader {
         }
 
     }
+    public void loadBookDetail(Context context, ImageView imageView, String url, String isBookType) {
+        String newUrl = "";
+        if (!TextUtils.isEmpty(url) && !url.contains(Contacts.URL)) {
+            newUrl = Contacts.URL + url;
+        } else {
+            newUrl = url;
+        }
+        DrawableRequestBuilder builder = Glide.with(context)
+                .load(newUrl)
+                .placeholder(R.drawable.img_book_default)
+                .error(R.drawable.img_book_default)
+                .thumbnail(0.1f)
+                .diskCacheStrategy(DiskCacheStrategy.ALL);
+        if (Contacts.KEBEN.equals(isBookType)) {  //课本 214*274
+            builder.override(UIUtils.getDimension(R.dimen.x214), UIUtils.getDimension(R.dimen.y274)).into(imageView);
+        } else { //课外书 190*250
+            builder.override(UIUtils.getDimension(R.dimen.x190), UIUtils.getDimension(R.dimen.y252)).into(imageView);
+        }
+
+    }
 }

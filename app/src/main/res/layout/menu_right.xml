@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fm_menu_right"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background_white"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <RelativeLayout
+        android:layout_width="@dimen/x480"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:id="@+id/ll_items"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y66"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/fm_chapter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_chapter"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="章节"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x24" />
+
+                <View
+                    android:id="@+id/driver_chapter"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/y2"
+                    android:layout_gravity="bottom"
+                    android:background="@color/black" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/item_driver"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y2"
+            android:layout_below="@+id/ll_items"
+            android:background="@color/black" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_ml"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/item_driver"
+            android:layout_marginLeft="@dimen/x20"
+            android:listSelector="@android:color/transparent" />
+
+    </RelativeLayout>
+</FrameLayout>

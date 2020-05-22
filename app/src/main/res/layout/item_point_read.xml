@@ -33,7 +33,7 @@ android:background="@drawable/shape_background_white">
     <FrameLayout
         android:id="@+id/fram_findpositon"
         android:layout_marginTop="@dimen/x10"
-        android:background="@drawable/shape_background_hui"
+        android:background="@drawable/img_back_ground_button"
         android:layout_width="@dimen/x95"
         android:layout_height="@dimen/y35">
 
@@ -65,7 +65,7 @@ android:background="@drawable/shape_background_white">
         android:id="@+id/fram_update"
         android:layout_marginLeft="@dimen/x19"
         android:layout_marginTop="@dimen/x10"
-        android:background="@drawable/shape_background_hui"
+        android:background="@drawable/img_back_ground_button"
         android:layout_width="@dimen/x95"
         android:layout_height="@dimen/y35">
 
@@ -123,8 +123,8 @@ android:background="@drawable/shape_background_white">
     android:layout_toRightOf="@id/img_book"
     android:layout_below="@id/text_title_two"
     android:layout_marginTop="@dimen/x20"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="@dimen/x80"
+    android:layout_height="@dimen/x30">
 
     <TextView
         android:textColor="@color/white"
@@ -138,6 +138,7 @@ android:background="@drawable/shape_background_white">
 </LinearLayout>
 
 <ProgressBar
+    android:visibility="gone"
     android:id="@+id/progress_bar"
     android:progress="30"
     android:max="100"

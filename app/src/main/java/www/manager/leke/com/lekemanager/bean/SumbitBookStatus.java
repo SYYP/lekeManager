@@ -7,12 +7,13 @@ package www.manager.leke.com.lekemanager.bean;
  */
 public class SumbitBookStatus {
 
-     private  int BookId;
+     private  int bookId;
      private String bookStatus;
      private  String bookEntryLogInfo;
 
+
     public SumbitBookStatus(int bookId, String bookStatus, String bookEntryLogInfo) {
-        BookId = bookId;
+        this. bookId = bookId;
         this.bookStatus = bookStatus;
         this.bookEntryLogInfo = bookEntryLogInfo;
     }
@@ -20,7 +21,7 @@ public class SumbitBookStatus {
     @Override
     public String toString() {
         return "SumbitBookStatus{" +
-                "BookId=" + BookId +
+                "BookId=" + bookId +
                 ", bookStatus='" + bookStatus + '\'' +
                 ", bookEntryLogInfo='" + bookEntryLogInfo + '\'' +
                 '}';

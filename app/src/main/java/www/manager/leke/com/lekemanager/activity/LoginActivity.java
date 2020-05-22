@@ -20,6 +20,7 @@ import www.manager.leke.com.lekemanager.MainActivity;
 import www.manager.leke.com.lekemanager.R;
 import www.manager.leke.com.lekemanager.base.BaseFragmentActivity;
 import www.manager.leke.com.lekemanager.bean.LoginBean;
+import www.manager.leke.com.lekemanager.http.ApiException;
 import www.manager.leke.com.lekemanager.http.HttpManager;
 import www.manager.leke.com.lekemanager.utils.Contacts;
 import www.manager.leke.com.lekemanager.utils.GsonUitls;
@@ -56,16 +57,17 @@ public class LoginActivity extends BaseFragmentActivity {
 
     @Override
     public View layout() {
-        return inflate(R.layout.activity_login);
-    }
-
-    @Override
-    public void loadData() {
         String account = SpUtils.getString(Contacts.ACCOUNT);
         String password = SpUtils.getString(Contacts.PASSWORD);
         if(!TextUtils.isEmpty(account)&&!TextUtils.isEmpty(password)){
             NetWorkLogin(account, password);
         }
+        return inflate(R.layout.activity_login);
+    }
+
+    @Override
+    public void loadData() {
+
         //加载数据
         edteNumber.addTextChangedListener(new TextWatcher() {
             @Override
@@ -156,6 +158,7 @@ public class LoginActivity extends BaseFragmentActivity {
                                          //登录成功后我要记住密码下次直接进来
                                         SpUtils.putString(Contacts.ACCOUNT,account);
                                         SpUtils.putString(Contacts.PASSWORD,password);
+                                        SpUtils.setUserId(loginBean.getUserId()+"");
                                         ArrayList<String> permissionIds = infoBean.getPermissionIds();
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                         SpUtils.putString(Contacts.PERMISSIOMIDS, GsonUitls.toJson(permissionIds));
@@ -166,6 +169,7 @@ public class LoginActivity extends BaseFragmentActivity {
                                 @Override
                                 public void call(Throwable throwable) {
                                     Log.d("TAG", "信息为：" + throwable.getMessage());
+
                                 }
                             });
 
@@ -174,6 +178,11 @@ public class LoginActivity extends BaseFragmentActivity {
                 @Override
                 public void call(Throwable throwable) {
                     Log.d("TAG", "信息为：" + throwable.getMessage());
+                    if (throwable instanceof ApiException) {
+                        if(((ApiException) throwable).getCode()==100102){
+                            showToast("密码错误");
+                        }
+                    }
 
                 }
             });

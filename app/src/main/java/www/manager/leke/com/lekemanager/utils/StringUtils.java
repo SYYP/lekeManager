@@ -45,4 +45,49 @@ public class StringUtils {
             return str;
         }
     }
+
+    public static String getadeCode(String gradeCode){
+        if(!TextUtils.isEmpty(gradeCode)) {
+            switch (gradeCode) {
+                case "SE01":
+                    gradeCode = "一年级";
+                    break;
+                case "SE02":
+                    gradeCode = "二年级";
+                    break;
+                case "SE03":
+                    gradeCode = "三年级";
+                    break;
+                case "SE04":
+                    gradeCode = "四年级";
+                    break;
+                case "SE05":
+                    gradeCode = "五年级";
+                    break;
+                case "SE06":
+                    gradeCode = "六年级";
+                    break;
+                case "SE07":
+                    gradeCode = "七年级";
+                    break;
+                case "SE08":
+                    gradeCode = "八年级";
+                    break;
+                case "SE09":
+                    gradeCode = "九年级";
+                    break;
+                case "SE10":
+                    gradeCode = "高一";
+                    break;
+                case "SE11":
+                    gradeCode = "高二";
+                    break;
+                case "SE12":
+                    gradeCode = "高三";
+                    break;
+            }
+
+        }
+        return gradeCode;
+    }
 }

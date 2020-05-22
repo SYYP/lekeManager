@@ -2,7 +2,7 @@ package www.manager.leke.com.lekemanager.bean;
 
 
 import www.manager.leke.com.lekemanager.configuration.HtppConfiguration;
-
+@Deprecated
 public class DownOssBean {
     /**ak*/
     private String accessKeyId ;

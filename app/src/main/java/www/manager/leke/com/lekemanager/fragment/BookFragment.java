@@ -9,6 +9,7 @@ import java.util.List;
 import rx.functions.Action1;
 import www.manager.leke.com.lekemanager.R;
 import www.manager.leke.com.lekemanager.adapter.MainRecyclerAdapter;
+import www.manager.leke.com.lekemanager.bean.BaseEvent;
 import www.manager.leke.com.lekemanager.bean.MainBookMessageBean;
 import www.manager.leke.com.lekemanager.http.ApiException;
 import www.manager.leke.com.lekemanager.http.HttpManager;
@@ -106,6 +107,16 @@ public class BookFragment extends MainFragment {
                     });
         }else {
             UIUtils.showToastSafe(R.string.no_net);
+        }
+    }
+
+    @Override
+    public void onEventMainThread(BaseEvent event) {
+        super.onEventMainThread(event);
+        switch (event.getType()){
+            case Contacts.BOOKFRAGMENT:
+                NetworkBookMessage(bookStatus);
+                break;
         }
     }
 }

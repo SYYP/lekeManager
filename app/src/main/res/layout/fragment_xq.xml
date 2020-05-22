@@ -26,7 +26,7 @@
             <TextView
                 android:id="@+id/text_booktitle"
                 style="@style/book_title_color"
-                android:text="语文五年级下册"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -45,7 +45,7 @@
             <TextView
                 android:id="@+id/text_subject"
                 style="@style/book_title_color"
-                android:text="语文"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
             <TextView
                 android:id="@+id/text_grade"
                 style="@style/book_title_color"
-                android:text="二年级上册"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -99,7 +99,7 @@
             <TextView
                 android:id="@+id/text_project"
                 style="@style/book_title_color"
-                android:text="人教版"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
             <TextView
                 android:id="@+id/text_cyan"
                 style="@style/book_title_color"
-                android:text="北京出版社"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -135,7 +135,7 @@
             <TextView
                 android:id="@+id/text_number"
                 style="@style/book_title_color"
-                android:text="8527426301"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -171,7 +171,7 @@
             <TextView
                 android:id="@+id/text_keyword"
                 style="@style/book_title_color"
-                android:text="暂无"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -189,7 +189,7 @@
             <TextView
                 android:id="@+id/text_yins"
                 style="@style/book_title_color"
-                android:text="暂无"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -207,7 +207,7 @@
             <TextView
                 android:id="@+id/text_banc"
                 style="@style/book_title_color"
-                android:text="暂无"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -225,7 +225,7 @@
             <TextView
                 android:id="@+id/text_yuanj"
                 style="@style/book_title_color"
-                android:text="暂无"></TextView>
+                android:text=""></TextView>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

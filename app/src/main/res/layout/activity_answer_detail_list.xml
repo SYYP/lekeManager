@@ -159,41 +159,6 @@
         android:layout_marginTop="2px"
         android:background="@android:color/white"
         android:orientation="vertical">
-        <!--题干解答按钮栏-->
-        <!--<LinearLayout
-            android:id="@+id/btn_bar_2"
-            android:layout_width="match_parent"
-            android:layout_height="60px"
-            android:background="@android:color/black">
-            &lt;!&ndash;题干按钮&ndash;&gt;
-            <TextView
-                android:id="@+id/question_body_btn"
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/background_press_green_normal_white_selector"
-                android:clickable="true"
-                android:gravity="center"
-                android:text="题干"
-                android:textColor="@drawable/color_selector_press_white_normal_black"
-                android:textSize="24px" />
-            &lt;!&ndash;解答按钮&ndash;&gt;
-            <TextView
-                android:id="@+id/answer_analysis_btn"
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="2px"
-                android:layout_marginRight="1px"
-                android:layout_weight="1"
-                android:background="@drawable/background_press_green_normal_white_selector"
-                android:clickable="true"
-                android:gravity="center"
-                android:text="解答"
-                android:textColor="@drawable/color_selector_press_white_normal_black"
-                android:textSize="24px" />
-        </LinearLayout>-->
-
-        <!--问答信息显示条-->
         <LinearLayout
             android:id="@+id/btn_bar_3"
             android:layout_width="match_parent"
@@ -326,4 +291,9 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <include
+
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        layout="@layout/menu_right"></include>
 </RelativeLayout>

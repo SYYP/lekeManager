@@ -46,6 +46,12 @@ public class SpUtils {
         getEditor().putString(key, value);
         getEditor().commit();
     }
+    public static String getUserId() {
+        return SpUtils.getString("userId");
+    }
+    public static void setUserId(String userId) {
+        SpUtils.putString("userId", userId);
+    }
 
     public static boolean clearXml() {
         return getEditor().clear().commit();

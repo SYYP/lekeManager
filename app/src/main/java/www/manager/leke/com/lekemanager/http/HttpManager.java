@@ -3,6 +3,7 @@ package www.manager.leke.com.lekemanager.http;
 
 import android.util.Pair;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -14,14 +15,16 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import www.manager.leke.com.lekemanager.base.BaseResult;
+import www.manager.leke.com.lekemanager.bean.BookMessageDetail;
 import www.manager.leke.com.lekemanager.bean.BookOssBean;
 import www.manager.leke.com.lekemanager.bean.LoginBean;
 import www.manager.leke.com.lekemanager.bean.MainBookMessageBean;
+import www.manager.leke.com.lekemanager.bean.QuestionListBean;
 import www.manager.leke.com.lekemanager.bean.SumbitBookStatus;
+import www.manager.leke.com.lekemanager.bean.SumbitQuestion;
+import www.manager.leke.com.lekemanager.bean.SumbitaudioBook;
 import www.manager.leke.com.lekemanager.configuration.HtppConfiguration;
 import www.manager.leke.com.lekemanager.dialog.LoadingProgressDialog;
-import www.manager.leke.com.lekemanager.net.DownRequest;
-import www.manager.leke.com.lekemanager.net.OssInfoBean;
 import www.manager.leke.com.lekemanager.utils.LogUtils;
 import www.manager.leke.com.lekemanager.utils.SystemUtils;
 
@@ -88,7 +91,7 @@ public final class HttpManager {
      * @return
      */
     public Observable<BookOssBean> getBookOss(int bookId, String deviceModel) {
-        LogUtils.e("271 【12009】【已完成】获取图书 OSS下载地址 ",
+        LogUtils.e("271 【51005】【已完成】管理端取得图书OSS下载地址 ",
                 "bookId:" + bookId + ","
                         + "deviceModel:" + deviceModel);
 
@@ -174,7 +177,7 @@ public final class HttpManager {
      * @param
      * @return
      */
-    public Observable<Pair<Integer, List<MainBookMessageBean>>> getQuestionBank(int bookOptor) {
+    public Observable<Pair<Integer, List<MainBookMessageBean>>> getQuestionBank(Integer bookOptor) {
         LogUtils.e("【63001】【对应管理pad端有更新】取得个人待处理题库（练习册）列表 "
                 + "bookOptor" + bookOptor);
         return getServerApi().getQuestionBank(bookOptor, SystemUtils.getDeviceModel())
@@ -183,52 +186,120 @@ public final class HttpManager {
 
     }
 
-    public Observable<List<OssInfoBean>> downloadBook2(DownRequest request) {
-        LogUtils.e("FH", "!!!!!调用ServerApi下载图书:downloadBook");
-        return getServerApi().downloadBook2(request)
-                .compose(RxSchedulersHelper.<BaseResult<List<OssInfoBean>>>io_main())
-                .compose(RxLekeResultHelper.<List<OssInfoBean>>handleResult());
+    /***
+     *
+     * @param
+     * @return
+     * 【62013】【已完成】更新点读状态
+     */
+    public Observable<Object> getAudioStatus(SumbitaudioBook sumbitaudioBook) {
+        LogUtils.e("【62013】【已完成】更新点读状态  "
+                + "sumbitaudioBook" + sumbitaudioBook.toString());
+        return getServerApi().getSetReadbookStatus(sumbitaudioBook)
+                .compose(RxSchedulersHelper.io_main())
+                .compose(RxLekeResultHelper.handleResult_new());
+    }
+
+    /**
+     * 【63013】【已完成】题库（练习册）编辑提交
+     *
+     * @param
+     * @return
+     */
+    public Observable<Object> getQuestionSumbit(int qBankBookId, String entryLogInfo) {
+        LogUtils.e("【63013】【已完成】题库（练习册）编辑提交  "
+                + "qBankBookId" + qBankBookId + ""
+                + "entryLogInfo" + entryLogInfo);
+        return getServerApi().getQuestionbankSubmit(qBankBookId, entryLogInfo)
+                .compose(RxSchedulersHelper.io_main())
+                .compose(RxLekeResultHelper.handleResult());
+    }
+
+    /***
+     *【63014】【已完成】题库（练习册）校对提交
+     * @param
+     * @return
+     */
+    public Observable<Object> getQuestionInspect(SumbitQuestion sumbitQuestion) {
+        LogUtils.e("【63014】【已完成】题库（练习册）校对提交 "
+                + "sumbitQuestion" + sumbitQuestion.toString() + ""
+        );
+        return getServerApi().getQuestionInspect(sumbitQuestion)
+                .compose(RxSchedulersHelper.io_main())
+                .compose(RxLekeResultHelper.handleResult());
+    }
+
+    /**
+     * 【63015】【已完成】题库（练习册）审核提交
+     *
+     * @param sumbitQuestion
+     * @return
+     */
+    public Observable<Object> getQuestionApprove(SumbitQuestion sumbitQuestion) {
+        LogUtils.e("【63015】【已完成】题库（练习册）审核提交 "
+                + "sumbitQuestion" + sumbitQuestion.toString() + "");
+        return getServerApi().getQuestionApprove(sumbitQuestion)
+                .compose(RxSchedulersHelper.io_main())
+                .compose(RxLekeResultHelper.handleResult());
+    }
+
+    /**
+     * 【61006】【已完成】取得指定ID的图书信息
+     *
+     * @return
+     */
+    public Observable<BookMessageDetail> getBookmessageDetail(int bookId) {
+        LogUtils.e("【61006】【已完成】取得指定ID的图书信息  "
+                + "sumbitQuestion" + bookId + "");
+        return getServerApi().getBookMesaageDetail(bookId)
+                .compose(RxSchedulersHelper.io_main())
+                .compose(RxLekeResultHelper.handleResult());
+    }
+
+    /**
+     * 【51002】 【已完成】更新用户密码
+     *
+     * @param oldPwassword
+     * @param newPassWord
+     * @return
+     */
+    public Observable<Object> getRevisePwd(String oldPwassword, String newPassWord) {
+        LogUtils.e(" 【51002】 【已完成】更新用户密码  "
+                + "oldPwassword" + oldPwassword + "" + "newPassWord" + newPassWord);
+        return getServerApi().getRevisePwd(oldPwassword, newPassWord)
+                .compose(RxSchedulersHelper.io_main())
+                .compose(RxLekeResultHelper.handleResult());
+    }
+
+    /**
+     *  【63007】【已完成】取得题库（练习册）章节题目数
+     * @param qBankBookId
+     * @param qStatusCode
+     * @return
+     */
+    public Observable<HashMap<String, Integer>> getQuestionAmount(Integer qBankBookId, String qStatusCode) {
+        LogUtils.e("63007】【已完成】取得题库（练习册）章节题目数" +
+                "qBankBookId" + qBankBookId + "qStatusCode" + qStatusCode);
+        return getServerApi().getQuestionAmoumt(qBankBookId, qStatusCode)
+                .compose(RxSchedulersHelper.io_main())
+                .compose(RxLekeResultHelper.handleResult());
+    }
+
+    /**
+     *   【63010】【已完成】取得题库（练习册）题目列表
+     * @param qBankBookId
+     * @param chapterId
+     * @param qStatusCode
+     * @return
+     */
+    public Observable<Pair<Integer, BaseResult<List<QuestionListBean>>>> getQuestionList(int qBankBookId , int chapterId, String qStatusCode){
+        LogUtils.e(" 【63010】【已完成】取得题库（练习册）题目列表" +
+                "qBankBookId" + qBankBookId + "qStatusCode" + qStatusCode+"chapterId"+chapterId);
+        return getServerApi().getQuestionBankList(qBankBookId,chapterId,qStatusCode)
+                .compose(RxSchedulersHelper.io_main())
+                .compose(RxLekeResultHelper.handleResult_new());
+
     }
 
 
-//
-//
-//    public Observable<List<BookInfoBean>> getBookShelf(BookShelfRequest req) {
-//        return getServerApi().getBookShelf(req)
-//                .compose(RxSchedulersHelper.<BaseResult<List<BookInfoBean>>>io_main())
-//                .compose(RxResultHelper.<List<BookInfoBean>>handleResult());
-//    }
-//
-//
-//    /**
-//     * 获取版本号
-//     */
-//    public Observable<Version> getVersion() {
-//        LogUtils.e("!!!!!调用ServerApi获取版本号:getVersion");
-//        return getServerApi().getVersion()
-//                .compose(RxSchedulersHelper.<BaseResult<Version>>io_main())
-//                .compose(RxResultHelper.<Version>handleResult());
-//    }
-//
-//    public Observable<List<BookInfo>> queryBook(String bookId) {
-//        LogUtils.e("FH", "!!!!!调用ServerApi获取图书信息:queryBook");
-//        return getServerApi().queryBook(bookId)
-//                .compose(RxSchedulersHelper.<BaseResult<List<BookInfo>>>io_main())
-//                .compose(RxResultHelper.<List<BookInfo>>handleResult());
-//    }
-//
-//    public Observable<List<BookInfo>> queryBookTitle(String bookCategoryMatch, String bookItemStatus) {
-//        LogUtils.e("FH", "!!!!!调用ServerApi获取图书信息:queryBook");
-//        return getServerApi().queryBookTitle(bookCategoryMatch, bookItemStatus)
-//                .compose(RxSchedulersHelper.<BaseResult<List<BookInfo>>>io_main())
-//                .compose(RxResultHelper.<List<BookInfo>>handleResult());
-//    }
-//
-//    public Observable<List<OriginQuestionItem>> queryItem(String bookId, String cursorId) {
-//        LogUtils.e("FH", "!!!!!调用ServerApi获取图书信息:queryBook");
-//        return getServerApi().queryItem(bookId, cursorId)
-//                .compose(RxSchedulersHelper.<BaseResult<List<OriginQuestionItem>>>io_main())
-//                .compose(RxResultHelper.<List<OriginQuestionItem>>handleResult());
-//    }
-//}
 }

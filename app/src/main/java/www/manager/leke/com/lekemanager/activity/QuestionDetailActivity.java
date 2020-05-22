@@ -1,7 +1,9 @@
 package www.manager.leke.com.lekemanager.activity;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -12,11 +14,26 @@ import android.widget.TextView;
 
 import com.frank.etude.pageable.PageBtnBar;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.functions.Action1;
 import www.manager.leke.com.lekemanager.R;
+import www.manager.leke.com.lekemanager.adapter.BookMessageAdapter;
+import www.manager.leke.com.lekemanager.adapter.QuestionMladapter;
 import www.manager.leke.com.lekemanager.base.BaseFragmentActivity;
+import www.manager.leke.com.lekemanager.base.BaseResult;
+import www.manager.leke.com.lekemanager.bean.BookMessageDetail;
+import www.manager.leke.com.lekemanager.bean.QuestionListBean;
+import www.manager.leke.com.lekemanager.http.ApiException;
+import www.manager.leke.com.lekemanager.http.HttpManager;
+import www.manager.leke.com.lekemanager.utils.Contacts;
+import www.manager.leke.com.lekemanager.utils.NetUtils;
+import www.manager.leke.com.lekemanager.utils.UIUtils;
 
 /**
  * Created by ypu
@@ -67,11 +84,44 @@ public class QuestionDetailActivity extends BaseFragmentActivity {
     FrameLayout answerBtnBar;
     @BindView(R.id.page_btn_bar)
     PageBtnBar pageBtnBar;
+    @BindView(R.id.img_refush)
+    ImageView imgRefush;
+    @BindView(R.id.tv_chapter)
+    TextView tvChapter;
+    @BindView(R.id.driver_chapter)
+    View driverChapter;
+    @BindView(R.id.fm_chapter)
+    FrameLayout fmChapter;
+    @BindView(R.id.ll_items)
+    LinearLayout llItems;
+    @BindView(R.id.item_driver)
+    View itemDriver;
+    @BindView(R.id.recycler_view_ml)
+    RecyclerView recyclerViewMl;
+    @BindView(R.id.fm_menu_right)
+    FrameLayout fmMenuRight;
+    private String mQstatusCode;
+    private Integer mQBankBookId;
+    HashMap<String, Integer> mHashQuestionNumber = new HashMap<>();//题干数量数据源
+    QuestionMladapter mBookMessageAdapter;
+    List<BookMessageDetail.BookContentsBean.NodesBeanX> mNodesBeanXList = new ArrayList<>();//目录数据源
+    private LinearLayoutManager mLinearLayoutManager;
 
     @Override
     public void init() {
 
     }
+
+
+    @Override
+    public void processExtraData() {
+        super.processExtraData();
+        mQstatusCode = getIntent().getStringExtra(Contacts.STATUSCODE);
+        mQBankBookId = getIntent().getIntExtra(Contacts.BOOKID, 0);
+
+
+    }
+
 
     @Override
     public View layout() {
@@ -80,25 +130,133 @@ public class QuestionDetailActivity extends BaseFragmentActivity {
 
     @Override
     public void loadData() {
+        networkQustMessage();
+        //网络请求
+        mLinearLayoutManager = new LinearLayoutManager(QuestionDetailActivity.this);
+        if (mBookMessageAdapter == null) {
+            mBookMessageAdapter = new QuestionMladapter(mNodesBeanXList, QuestionDetailActivity.this, mHashQuestionNumber);
+            recyclerViewMl.setLayoutManager(mLinearLayoutManager);
+        }
+        recyclerViewMl.setAdapter(mBookMessageAdapter);
+    }
 
+    private void getQuestionNumber() {
+        if (NetUtils.isWifiConnected()) {
+            HttpManager.getInstace().getQuestionAmount(mQBankBookId, mQstatusCode).subscribe(new Action1<HashMap<String, Integer>>() {
+                @Override
+                public void call(HashMap<String, Integer> map) {
+                    if (map != null) {
+                        mHashQuestionNumber.clear();
+                        mHashQuestionNumber.putAll(map);
+
+                    }
+                    mBookMessageAdapter.notifyDataSetChanged();
+
+                }
+            }, new Action1<Throwable>() {
+                @Override
+                public void call(Throwable throwable) {
+                    if (throwable instanceof ApiException)
+                        UIUtils.showToastSafe(throwable.getMessage());
+                }
+            });
+        } else {
+            UIUtils.showToastSafe(R.string.no_net);
+        }
     }
 
     @Override
     protected void dimissHtpp() {
 
     }
-    @OnClick({R.id.img_back, R.id.img_refush})
+
+    @OnClick({R.id.img_back, R.id.img_refush, R.id.real_ml, R.id.fm_menu_right})
     protected void OnClick(View view) {
         switch (view.getId()) {
             case R.id.img_back:
                 finish();
                 break;
-
             case R.id.img_refush:
+                break;
+            case R.id.real_ml:
+                fmMenuRight.setVisibility(View.VISIBLE);
+                //获取题数量
+                getQuestionNumber();
+                break;
+            case R.id.fm_menu_right:
+                fmMenuRight.setVisibility(View.GONE);
                 break;
             default:
                 break;
         }
     }
+
+    /**
+     * 获取目录
+     */
+    private void networkQustMessage() {
+        if (NetUtils.isWifiConnected()) {
+            HttpManager.getInstace().getBookmessageDetail(mQBankBookId).subscribe(new Action1<BookMessageDetail>() {
+                @Override
+                public void call(BookMessageDetail bookMessageDetail) {
+                    if (bookMessageDetail != null) {
+                        if (bookMessageDetail.getBookContents() != null) {
+                            List<BookMessageDetail.BookContentsBean.NodesBeanX> nodes = bookMessageDetail.getBookContents().getNodes();
+                            if (nodes != null) {
+                                mNodesBeanXList.clear();
+                                mNodesBeanXList.addAll(nodes);
+                                //拿到数据后开始获取题目目录
+                                getNetworkQuestionList(nodes.get(0).getId());
+
+                            }
+
+                        }
+                    }
+                }
+            }, new Action1<Throwable>() {
+                @Override
+                public void call(Throwable throwable) {
+
+                    if (throwable instanceof ApiException) {
+                        UIUtils.showToastSafe(R.string.no_net);
+                    }
+                }
+            });
+
+        } else {
+            UIUtils.showToastSafe(R.string.no_net);
+        }
+    }
+
+    /**
+     * 获取题目列表
+     *
+     * @param chapterId
+     */
+    private void getNetworkQuestionList(int chapterId) {
+        if (NetUtils.isWifiConnected()) {
+            HttpManager.getInstace().getQuestionList(mQBankBookId, chapterId, mQstatusCode)
+                    .subscribe(new Action1<Pair<Integer, BaseResult<List<QuestionListBean>>>>() {
+                        @Override
+                        public void call(Pair<Integer, BaseResult<List<QuestionListBean>>> integerBaseResultPair) {
+                            if (integerBaseResultPair != null) {
+                                Integer total = integerBaseResultPair.first;
+                                List<QuestionListBean> questionListBeanList = (List<QuestionListBean>) integerBaseResultPair.second;
+                            }
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+
+                            if (throwable instanceof ApiException) {
+                                UIUtils.showToastSafe(throwable.getMessage());
+                            }
+                        }
+                    });
+        } else {
+            UIUtils.showToastSafe(R.string.no_net);
+        }
+    }
+
 
 }
