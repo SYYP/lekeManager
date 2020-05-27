@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<www.manager.leke.com.lekemanager.view.ReadSeekBar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/read_seekBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+    android:layout_marginBottom="@dimen/x8"
+    tools:showIn="@layout/activity_read_pdf" />

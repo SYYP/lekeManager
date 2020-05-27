@@ -113,14 +113,14 @@ public class BookOssBean {
 
     public class DataPackUrlInfo extends BaseOssInfo {
         //图书的密码
-        private String atchEncryptKey;
+        private String atchEncryptkey;
 
-        public String getAtchEncryptKey() {
-            return atchEncryptKey;
+        public String getAtchEncryptkey() {
+            return atchEncryptkey;
         }
 
-        public void setAtchEncryptKey(String atchEncryptKey) {
-            this.atchEncryptKey = atchEncryptKey;
+        public void setAtchEncryptkey(String atchEncryptkey) {
+            this.atchEncryptkey = atchEncryptkey;
         }
 
         @Override
@@ -134,7 +134,7 @@ public class BookOssBean {
                     ", atchRemotePath='" + atchRemotePath + '\'' +
                     ", atchBucket='" + atchBucket + '\'' +
                     ", atchMd5='" + atchMd5 + '\'' +
-                    ", atchEncryptKey='" + atchEncryptKey + '\'' +
+                    ", atchEncryptKey='" + atchEncryptkey + '\'' +
                     '}';
         }
     }

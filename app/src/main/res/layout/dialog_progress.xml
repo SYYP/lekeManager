@@ -6,7 +6,7 @@
     >
 
     <LinearLayout
-       android:layout_marginTop="@dimen/x381"
+       android:layout_marginTop="@dimen/x379"
         android:id="@+id/liner"
         android:layout_centerHorizontal="true"
         android:gravity="center"
@@ -19,7 +19,7 @@
             android:progress="30"
             android:max="100"
             android:layout_marginLeft="@dimen/x10"
-            android:layout_marginTop="@dimen/x350"
+            android:layout_marginTop="@dimen/x345"
             android:layout_below="@id/liner_type_ground"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_toRightOf="@id/img_book"

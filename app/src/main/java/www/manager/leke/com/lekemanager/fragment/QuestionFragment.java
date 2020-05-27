@@ -83,13 +83,13 @@ public class QuestionFragment extends MainFragment {
                  List<MainBookMessageBean> mainBookMessageBeans=  integerListPair.second;
                  if(mainBookMessageBeans!=null&&mainBookMessageBeans.isEmpty()){
                       recyclerView.setVisibility(View.GONE);
-                      includeFail.setVisibility(View.VISIBLE);
+                     llFail.setVisibility(View.VISIBLE);
 
                  }else {
                      mMainBookMessageBeanList.clear();
                      mMainBookMessageBeanList.addAll(mainBookMessageBeans);
                      recyclerView.setVisibility(View.VISIBLE);
-                     includeFail.setVisibility(View.GONE);
+                     llFail.setVisibility(View.GONE);
                      recyclerView.setAdapter(mQuestBankRecyclerAdapter);
                  }
 

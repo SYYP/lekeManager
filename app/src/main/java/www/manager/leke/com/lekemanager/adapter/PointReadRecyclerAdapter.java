@@ -75,7 +75,7 @@ public class PointReadRecyclerAdapter extends RecyclerView.Adapter<PointReadRecy
         String codeValues = CodeValueUtils.getInstance().getReadCodeValues(mainBookMessageBean.getAudioStatus());
         holder.text_type.setText(codeValues);//状态值
         holder.liner_type_ground.setBackground(mContext.getResources().getDrawable(R.drawable.shape_background_black));
-        if (Contacts.BT02.equals(mainBookMessageBean.getAudioStatus()) ||Contacts.BT03.equals(mainBookMessageBean.getAudioStatus())) {
+        if (Contacts.BT02.equals(mainBookMessageBean.getAudioStatus()) || Contacts.BT03.equals(mainBookMessageBean.getAudioStatus())) {
             //最后一个按钮的字体显示
             holder.text_name.setText(UIUtils.getString(R.string.string_ok));
         } else if (Contacts.BT05.equals(mainBookMessageBean.getAudioStatus())) {
@@ -102,7 +102,7 @@ public class PointReadRecyclerAdapter extends RecyclerView.Adapter<PointReadRecy
             @Override
             public void onClick(View v) {
                 new OpenReaderUtils(new OpenBookInfo()
-                        .setProgressg(false)
+                        .setProgressg(true)
                         .setAutoOpean(true)
                         .setType(Contacts.READ)
                         .setBookId(mainBookMessageBean.getBookId())
@@ -118,6 +118,7 @@ public class PointReadRecyclerAdapter extends RecyclerView.Adapter<PointReadRecy
                         .setAutoOpean(true)
                         .setType(Contacts.READ)
                         .setBookId(mainBookMessageBean.getBookId())
+                        .setBookSrcode(Contacts.POSITION)
                 ).openReader();
             }
         });

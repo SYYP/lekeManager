@@ -38,6 +38,7 @@
     <string name="string_pdf_update">检查PDF更新</string>
     <string name="string_read_update">点读更新</string>
     <string name="string_position_read">点读位置查阅</string>
+    <string name="string_read_voice">调节音量大小</string>
     <string name="no_net">当前没有网络,请链接网络</string>
     <string name="string_no_message">暂无</string>
 

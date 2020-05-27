@@ -292,7 +292,7 @@ public final class HttpManager {
      * @param qStatusCode
      * @return
      */
-    public Observable<Pair<Integer, BaseResult<List<QuestionListBean>>>> getQuestionList(int qBankBookId , int chapterId, String qStatusCode){
+    public Observable<Pair<Integer,List<QuestionListBean>>> getQuestionList(int qBankBookId , int chapterId, String qStatusCode){
         LogUtils.e(" 【63010】【已完成】取得题库（练习册）题目列表" +
                 "qBankBookId" + qBankBookId + "qStatusCode" + qStatusCode+"chapterId"+chapterId);
         return getServerApi().getQuestionBankList(qBankBookId,chapterId,qStatusCode)

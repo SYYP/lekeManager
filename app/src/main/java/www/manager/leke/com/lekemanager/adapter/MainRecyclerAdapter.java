@@ -165,8 +165,10 @@ public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapte
         holder.fram_lookpdf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ReadPdfBookActivity.class);
-                mContext.startActivity(intent);
+                new OpenReaderUtils(new OpenBookInfo().setBookId(mainBookMessageBean.getBookId()).setAutoOpean(true).setProgressg(true)).openReader();
+//                Intent intent = new Intent(mContext, ReadPdfBookActivity.class);
+//                intent.putExtra(Contacts.BOOKID,mainBookMessageBean.getBookId());
+//                mContext.startActivity(intent);
             }
         });
         holder.fram_bookmessage.setOnClickListener(new View.OnClickListener() {

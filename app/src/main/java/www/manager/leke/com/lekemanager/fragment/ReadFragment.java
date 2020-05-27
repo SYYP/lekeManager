@@ -82,13 +82,13 @@ public class ReadFragment extends MainFragment {
                 public void call(Pair<Integer, List<MainBookMessageBean>> integerListPair) {
                     List<MainBookMessageBean> second = integerListPair.second;
                     if (second!=null&&second.isEmpty()) {
-                        includeFail.setVisibility(View.VISIBLE);
+                        llFail.setVisibility(View.VISIBLE);
                         recyclerView.setVisibility(View.GONE);
                     } else {
                         mMainBookMessageBeanList.clear();
                         mMainBookMessageBeanList.addAll(second);
                         recyclerView.setVisibility(View.VISIBLE);
-                        includeFail.setVisibility(View.GONE);
+                        llFail.setVisibility(View.GONE);
                         recyclerView.setAdapter(mPointReadRecyclerAdapter);
                     }
 

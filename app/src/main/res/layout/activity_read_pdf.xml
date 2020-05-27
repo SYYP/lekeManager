@@ -2,138 +2,230 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fm_sliding_up"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:id="@+id/fm_add_child"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <include layout="@layout/include_audiocontrol" />
+
+    <TextView
+        android:id="@+id/tv_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/x24" />
+
+    <TextView
+        android:id="@+id/tv_topLocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x20"
+        android:background="@android:color/black"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/x24" />
+
+    <www.manager.leke.com.lekemanager.view.MoveView
+        android:id="@+id/img_move"
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/x40"
+        android:layout_marginLeft="@dimen/x200"
+        android:layout_marginTop="@dimen/x200"
+        android:layout_marginRight="@dimen/x10"
+        android:background="@null"
+        android:src="@drawable/ic_sound_normal"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/imgBtn_backPage"
+        android:layout_width="@dimen/x80"
+        android:layout_height="@dimen/y80"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x20"
+        android:background="@null"
+        android:src="@drawable/selector_btn_back_page"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/imgBtn_NextPage"
+        android:layout_width="@dimen/x80"
+        android:layout_height="@dimen/y80"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center|right"
+        android:layout_marginRight="@dimen/x20"
+        android:background="@null"
+        android:src="@drawable/selector_btn_next_page"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_hide_topAndSeek"
+        android:layout_width="@dimen/x80"
+        android:layout_height="@dimen/y80"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginBottom="@dimen/y120"
+        android:background="@drawable/img_hide_top_buttom_bg"
+        android:gravity="center"
+        android:text="隐藏"
+        android:textColor="@color/black"
+        android:textSize="@dimen/x30" />
+
+    <include layout="@layout/include_readseekbar" />
+
     <RelativeLayout
         android:id="@+id/top_btn_bar1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y66"
         android:layout_marginTop="2px"
-        android:background="@drawable/shape_bottom_line">
+        android:background="@color/white">
 
         <TextView
-            android:drawablePadding="@dimen/x8"
-            android:gravity="center"
-            android:drawableLeft="@drawable/img_question_back"
-            android:layout_centerVertical="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/x24"
-            android:text="@string/string_book"
             android:id="@+id/img_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/img_question_back"
+            android:drawablePadding="@dimen/x8"
+            android:gravity="center"
+            android:text="@string/string_book"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x24" />
+
         <ImageView
             android:id="@+id/img_refush"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x26"
             android:layout_toRightOf="@id/img_back"
-            android:src="@drawable/img_question_refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:src="@drawable/img_question_refresh" />
         <!--上一个XX按钮-->
 
         <RelativeLayout
             android:id="@+id/real_more"
-            android:orientation="vertical"
+            android:layout_width="@dimen/x65"
+            android:layout_height="@dimen/y65"
             android:layout_alignParentRight="true"
             android:background="@drawable/img_more"
-            android:layout_width="@dimen/x65"
-            android:layout_height="@dimen/y65">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="@dimen/x18"
                 android:text="@string/string_more"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="@dimen/x18" />
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_marginRight="@dimen/x20"
-            android:id="@+id/real_ml"
-            android:orientation="vertical"
 
+        <RelativeLayout
+            android:id="@+id/real_ml"
+            android:layout_width="@dimen/x65"
+            android:layout_height="@dimen/y65"
+
+            android:layout_marginRight="@dimen/x20"
             android:layout_toLeftOf="@id/real_more"
             android:background="@drawable/img_question_catalog"
-            android:layout_width="@dimen/x65"
-            android:layout_height="@dimen/y65">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="@dimen/x18"
                 android:text="@string/string_ml"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="@dimen/x18" />
         </RelativeLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/liner_more"
-        android:background="@drawable/shape_background_line"
-        android:layout_width="@dimen/x196"
-        android:layout_height="wrap_content"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x2"
         android:layout_below="@id/top_btn_bar1"
+        android:background="@color/gray" />
+
+    <include layout="@layout/include_pdf_more" />
+
+    <LinearLayout
+        android:id="@+id/ll_voice"
+        android:layout_width="@dimen/x270"
+        android:layout_height="@dimen/y78"
         android:layout_alignParentRight="true"
-        android:orientation="vertical">
-        <TextView
-            android:layout_marginTop="@dimen/x20"
-            android:layout_marginLeft="@dimen/x20"
-            android:id="@+id/img_pdf_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/img_read_pdf_update"
-            android:drawablePadding="@dimen/x5"
-            android:gravity="center"
-            android:text="@string/string_pdf_update"
-            android:textColor="@color/book_title_color"
-            android:textSize="@dimen/x20" />
+        android:layout_marginTop="@dimen/y248"
+        android:layout_marginRight="@dimen/x198"
+        android:background="@drawable/shape_note_tools_pen_10"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone"
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x2"
-            android:layout_marginTop="@dimen/x10"
-            android:background="@color/book_title_color"></View>
+        >
 
         <TextView
-            android:layout_marginTop="@dimen/x20"
-            android:layout_marginLeft="@dimen/x20"
-            android:drawablePadding="@dimen/x5"
-            android:id="@+id/img_read_update"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x30"
+            android:gravity="center"
+            android:text="音量:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x24" />
+
+        <ImageButton
+            android:id="@+id/img_btn_reduce"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x15"
+            android:background="@null"
+            android:gravity="center"
+            android:paddingTop="@dimen/x10"
+            android:paddingBottom="@dimen/x4"
+            android:src="@drawable/img_voice_reduce_select" />
+
+
+        <EditText
+            android:id="@+id/et_voice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/img_pdf_read_update"
-
+            android:layout_marginLeft="@dimen/x15"
+            android:background="@drawable/et_voice"
             android:gravity="center"
-            android:text="@string/string_read_update"
-            android:textColor="@color/book_title_color"
-            android:textSize="@dimen/x20" />
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:maxLength="2"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/x24" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x2"
-            android:layout_marginTop="@dimen/x10"
-            android:background="@color/book_title_color"></View>
 
-        <TextView
-            android:layout_marginTop="@dimen/x20"
-            android:layout_marginLeft="@dimen/x20"
-            android:drawablePadding="@dimen/x5"
-            android:id="@+id/img_read_position"
+        <ImageButton
+            android:id="@+id/img_btn_enlarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/img_pdf_read_position"
-            android:gravity="center"
-            android:text="@string/string_position_read"
-            android:textColor="@color/book_title_color"
-            android:textSize="@dimen/x20" />
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/x15"
+            android:background="@null"
+            android:src="@drawable/img_voice_enlarge_select" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x2"
-            android:layout_marginTop="@dimen/x10"
-            android:background="@color/book_title_color"></View>
     </LinearLayout>
+
+    <www.manager.leke.com.lekemanager.view.BookMenuView
+        android:id="@+id/bookMenuView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"></www.manager.leke.com.lekemanager.view.BookMenuView>
 </RelativeLayout>

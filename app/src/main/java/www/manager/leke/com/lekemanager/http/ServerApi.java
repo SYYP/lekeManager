@@ -131,5 +131,5 @@ public interface ServerApi {
      *  【63010】【已完成】取得题库（练习册）题目列表
      */
        @GET("questionbank/item/list")
-      Observable<BaseResult<BaseResult<List<QuestionListBean>>>> getQuestionBankList(@Query("qBankBookId")int qBankBookId,@Query("chapterId") int chapterId,@Query("qStatusCode") String qStatusCode);
+      Observable<BaseResult<List<QuestionListBean>>> getQuestionBankList(@Query("qBankBookId")int qBankBookId,@Query("chapterId") int chapterId,@Query("qStatusCode") String qStatusCode);
 }

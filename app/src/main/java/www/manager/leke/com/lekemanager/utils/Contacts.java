@@ -7,6 +7,7 @@ package www.manager.leke.com.lekemanager.utils;
 public class Contacts {
     public static final String URL = "http:";
     public static final String OSSPATH="http://";
+    public static final String OSSASFFIX=".aliyuncs.com";
     public static final String TOKEN = "token";
     public static final String INFORBEAN = "inforbean";
     public static final String ACCOUNT = "account";
@@ -54,5 +55,6 @@ public class Contacts {
     public static final String IB01 = "IB01"; //isModifier=true时候传
     public static final String IB02 = "IB02"; //isInspector=true时候传
     public static final String IB03 = "IB03";//isApprover=true时候传
+    public static final String POSITION="position";
 
 }

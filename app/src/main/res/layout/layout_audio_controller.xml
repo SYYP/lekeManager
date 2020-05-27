@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y86">
+
+    <FrameLayout
+        android:id="@+id/fl_right"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_controller"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y86"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/x20"
+            android:background="@drawable/shape_book_page_number"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/imgBtn_play"
+                android:layout_width="@dimen/x75"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x20"
+                android:background="@null"
+                android:src="@drawable/selector_read_pause2" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_pre"
+                android:layout_width="@dimen/x70"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:src="@drawable/ic_audio_pre" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_next"
+                android:layout_width="@dimen/x70"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:src="@drawable/ic_audio_next" />
+
+            <View
+                android:layout_width="@dimen/x2"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_close"
+                android:layout_width="@dimen/x80"
+                android:layout_height="@dimen/x80"
+                android:background="@null"
+                android:src="@drawable/ic_audio_stop" />
+
+        </LinearLayout>
+
+        <www.manager.leke.com.lekemanager.view.TouchMoveView
+            android:id="@+id/imgBtn_show_hide"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/y80"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/x20"
+            android:background="@null"
+            android:src="@drawable/ic_audio" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/ll_controller2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y86"
+            android:layout_marginLeft="@dimen/x20"
+            android:background="@drawable/shape_book_page_number"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/imgBtn_close2"
+                android:layout_width="@dimen/x80"
+                android:layout_height="@dimen/x80"
+                android:background="@null"
+                android:src="@drawable/ic_audio_stop" />
+
+            <View
+                android:layout_width="@dimen/x2"
+                android:layout_height="match_parent"
+                android:background="@color/black" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_play2"
+                android:layout_width="@dimen/x75"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/x20"
+                android:background="@null"
+                android:src="@drawable/selector_read_pause2" />
+
+
+            <ImageButton
+                android:id="@+id/imgBtn_pre2"
+                android:layout_width="@dimen/x70"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:src="@drawable/ic_audio_pre" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_next2"
+                android:layout_width="@dimen/x70"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:src="@drawable/ic_audio_next" />
+
+        </LinearLayout>
+
+        <www.manager.leke.com.lekemanager.view.TouchMoveView
+            android:id="@+id/imgBtn_show_hide2"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/y80"
+            android:layout_marginLeft="@dimen/x20"
+            android:background="@null"
+            android:src="@drawable/ic_audio"
+            />
+    </FrameLayout>
+</FrameLayout>

@@ -13,4 +13,5 @@
     <color name="my_background">#99ececec</color>
     <color name="color_transparen">#00000000</color>
     <color name="color_background_white">#72000000</color>
+    <color name="color_cc">#cccccc</color>
 </resources>

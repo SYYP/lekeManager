@@ -113,7 +113,7 @@
             android:background="@color/book_list_color"
             android:nestedScrollingEnabled="false"></android.support.v7.widget.RecyclerView>
     <LinearLayout
-        android:visibility="gone"
+
         android:id="@+id/include_fail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

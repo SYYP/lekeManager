@@ -86,13 +86,13 @@ public class BookFragment extends MainFragment {
                             //拿到数据源
                             List<MainBookMessageBean> second = integerListPair.second;
                             if (!second.isEmpty()) {
-                                includeFail.setVisibility(View.GONE);
+                                llFail.setVisibility(View.GONE);
                                 recyclerView.setVisibility(View.VISIBLE);
                                 mMainBookMessageBeanList.clear();
                                 mMainBookMessageBeanList.addAll(second);
                                 recyclerView.setAdapter(mMainRecyclerAdapter);
                             } else {
-                                includeFail.setVisibility(View.VISIBLE);
+                                llFail.setVisibility(View.VISIBLE);
                                 recyclerView.setVisibility(View.GONE);
                             }
 

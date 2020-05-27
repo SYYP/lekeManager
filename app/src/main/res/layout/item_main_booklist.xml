@@ -16,8 +16,8 @@
             android:layout_margin="@dimen/x10"
             android:background="@drawable/shape_background_line"
             android:id="@+id/liner_book"
-            android:layout_width="@dimen/x151"
-            android:layout_height="@dimen/y201">
+            android:layout_width="@dimen/x152"
+            android:layout_height="@dimen/y202">
 
             <ImageView
                 android:id="@+id/img_book"

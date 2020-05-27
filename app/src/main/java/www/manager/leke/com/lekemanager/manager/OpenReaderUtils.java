@@ -91,7 +91,7 @@ public class OpenReaderUtils {
             if (bookOssBean != null) {
                 mOss = bookOssBean;
                 checkLocalMedia();
-                Log.d(TAG,mOss.toString());
+                Log.d(TAG, mOss.toString());
             } else {
                 LogUtils.e(TAG, "BookOssBean = null");
                 UIUtils.showToastSafe("该书已下架", Toast.LENGTH_LONG);
@@ -116,20 +116,21 @@ public class OpenReaderUtils {
             if (Contacts.READ.equals(mInfo.getType())) {
                 time = mOss.getAudioConfigUrlInfo().getExpiration();
             } else {
-                mOss.getDataPackUrlInfo().getExpiration();
+                time = mOss.getDataPackUrlInfo().getExpiration();
             }
             if (mDialogUtils == null) {
-                mDialogUtils.setTitle("暂无更新");
-                mDialogUtils.setTime("最后更新时间：" + time);
-                mDialogUtils.setBtnName("知道了");
-                mDialogUtils.showUpdateBook();
-                mDialogUtils.setBookOnClick(new DialogUtils.BookOnClick() {
-                    @Override
-                    public void OnClickListener(BaseDialogs mDialogs) {
-                        mDialogs.dismiss();
-                    }
-                });
+                mDialogUtils = new DialogUtils(BaseFragmentActivity.getForegroundActivity());
             }
+            mDialogUtils.setTitle("暂无更新");
+            mDialogUtils.setTime("最后更新时间：" + time);
+            mDialogUtils.setBtnName("知道了");
+            mDialogUtils.showUpdateBook();
+            mDialogUtils.setBookOnClick(new DialogUtils.BookOnClick() {
+                @Override
+                public void OnClickListener(BaseDialogs mDialogs) {
+                    mDialogs.dismiss();
+                }
+            });
         }
     }
 
@@ -145,7 +146,7 @@ public class OpenReaderUtils {
         ossInfo.setExpiration(mOss.getDataPackUrlInfo().getExpiration());
         ossInfo.setBucketName(mOss.getDataPackUrlInfo().getAtchBucket());
         ossInfo.setObjectKey(mOss.getDataPackUrlInfo().getAtchRemotePath());
-        //ossInfo.setEndpoint(Contacts.OSSPATH+mOss.getDataPackUrlInfo().getRegion());
+        ossInfo.setEndpoint(Contacts.OSSPATH + mOss.getDataPackUrlInfo().getRegion() + Contacts.OSSASFFIX);
 
         ossInfo.setFileType("book");
         ossInfo.setSavePath(FileUtil.getReaderPath() + mInfo.getBookId() + ".pdf");
@@ -159,7 +160,6 @@ public class OpenReaderUtils {
      * 下载音频
      */
     private void doFileMedia() {
-
         AliOssInfo ossInfo = new AliOssInfo();
         ossInfo.setAccessKeyId(mOss.getAudioDataUrlInfo().getAccessKeyId());
         ossInfo.setAccessKeySecret(mOss.getAudioDataUrlInfo().getAccessKeySecret());
@@ -167,8 +167,7 @@ public class OpenReaderUtils {
         ossInfo.setExpiration(mOss.getAudioDataUrlInfo().getExpiration());
         ossInfo.setBucketName(mOss.getAudioDataUrlInfo().getAtchBucket());
         ossInfo.setObjectKey(mOss.getAudioDataUrlInfo().getAtchRemotePath());
-        ossInfo.setEndpoint(Contacts.OSSPATH+mOss.getAudioDataUrlInfo());
-
+        ossInfo.setEndpoint(Contacts.OSSPATH + mOss.getAudioDataUrlInfo().getRegion() + Contacts.OSSASFFIX);
         ossInfo.setFileType("audio");
         ossInfo.setSavePath(FileUtil.getAudioPath() + mInfo.getBookId() + ".zip");
         OssManager.getInstance().asyDownFile(ossInfo, new MediaOssListenerImp("音频"));
@@ -186,7 +185,7 @@ public class OpenReaderUtils {
         ossInfo.setExpiration(mOss.getAudioConfigUrlInfo().getExpiration());
         ossInfo.setBucketName(mOss.getAudioConfigUrlInfo().getAtchBucket());
         ossInfo.setObjectKey(mOss.getAudioConfigUrlInfo().getAtchRemotePath());
-        ossInfo.setEndpoint(Contacts.OSSPATH+mOss.getAudioConfigUrlInfo().getRegion());
+        ossInfo.setEndpoint(Contacts.OSSPATH + mOss.getAudioConfigUrlInfo().getRegion() + Contacts.OSSASFFIX);
         ossInfo.setFileType("configure");
         ossInfo.setSavePath(FileUtil.getConfigurePath() + mInfo.getBookId() + ".zip");
         OssManager.getInstance().asyDownFile(ossInfo, new ConfigOssListenerImp("配置"));
@@ -203,21 +202,22 @@ public class OpenReaderUtils {
         @Override
         public void onSuccess(int progress) {
             LogUtils.e(TAG, "onSuccess. .. BookOssListenerImp.......progress:.." + progress);
-            setProgress(progress);
+            if(mInfo.isProgress()) {
+                setProgress(progress);
+            }
         }
 
         @Override
         public void onFinish() {
             LogUtils.e(TAG, "onFinish.....BookOssListenerImp.....");
             SpUtils.putString(OpenReaderUtils.class.getName() + mInfo.getBookId() + "pdf" + "md5", mOss.getDataPackUrlInfo().getAtchMd5());
-            SpUtils.putString("keys" + mInfo.getBookId() + "pdf", mOss.getDataPackUrlInfo().getAtchEncryptKey());
-            LogUtils.e("袁野。。。save。。key。：：：" + mOss.getDataPackUrlInfo().getAtchEncryptKey());
-            if (mInfo.isProgress()) {
+            SpUtils.putString("keys" + mInfo.getBookId() + "pdf", mOss.getDataPackUrlInfo().getAtchEncryptkey());
+            LogUtils.e("袁野。。。save。。key。：：：" + mOss.getDataPackUrlInfo().getAtchEncryptkey());
                 if (mPrgDg != null) {
                     mPrgDg.dismiss();
                 }
                 mPrgDg = null;
-            }
+                UIUtils.showToastSafe("更新完成!");
             if (mFlagOpenState) {
                 jump();
             }
@@ -247,7 +247,7 @@ public class OpenReaderUtils {
         @Override
         public void onSuccess(int progress) {
 //            LogUtils.e(TAG, "onSuccess....MediaOssListenerImp....progress:.." + progress);
-            setProgress(progress);
+         //   setProgress(progress);
         }
 
         @Override
@@ -313,7 +313,7 @@ public class OpenReaderUtils {
         @Override
         public void onSuccess(int progress) {
 //            LogUtils.e(TAG, "onSuccess...ConfigOssListenerImp.....progress:.." + progress);
-            setProgress(progress);
+          //  setProgress(progress);
         }
 
         @Override
@@ -370,7 +370,9 @@ public class OpenReaderUtils {
             mPrgDg.show();
         }
 
+
         mPrgDg.setProgress(progress);
+
     }
 
 
@@ -392,10 +394,10 @@ public class OpenReaderUtils {
                 if (StringUtils.isEmpty(key)) {
                     LogUtils.e(TAG, "本地有书 ,没有秘钥需要更新)");
                     //更新秘钥
-                    SpUtils.putString("keys" + mInfo.getBookId() + "pdf", mOss.getDataPackUrlInfo().getAtchEncryptKey());
+                    SpUtils.putString("keys" + mInfo.getBookId() + "pdf", mOss.getDataPackUrlInfo().getAtchEncryptkey());
                 } else {
                     LogUtils.e(TAG, "本地有书 有钥匙 对比秘钥");
-                    if (!key.equalsIgnoreCase(mOss.getDataPackUrlInfo().getAtchEncryptKey())) {
+                    if (!key.equalsIgnoreCase(mOss.getDataPackUrlInfo().getAtchEncryptkey())) {
                         LogUtils.e(TAG, "本地有书 服务器秘钥和本地秘钥不相同 删除图书下载");
                         FileUtils.delFileOrFolder(FileUtil.getReaderPath() + mInfo.getBookId() + ".pdf");
                         //如果有更新弹dialog
@@ -424,14 +426,15 @@ public class OpenReaderUtils {
                     }
                 }
             } else {
-                doFileBooks();
+                doFileBook();
             }
         }
     }
 
     private void doFileBooks() {
-        if (mDialogUtils == null)
+        if (mDialogUtils == null) {
             mDialogUtils = new DialogUtils(BaseFragmentActivity.getForegroundActivity());
+        }
         mDialogUtils.setTitle("PDF更新，是否下载新版本？");
         mDialogUtils.setBtnName("点击更新");
         mDialogUtils.setTime(mOss.getDataPackUrlInfo().getExpiration());
@@ -452,7 +455,11 @@ public class OpenReaderUtils {
         //检测服务器音频配置文件
         if (null == mOss.getAudioConfigUrlInfo() || null == mOss.getAudioDataUrlInfo()) {
             LogUtils.e(TAG, "该书没有点读 文件getAudioConfigUrlInfo  ， getAudioDataUrlInfo= null");
-            checkLocalBook();
+            if (Contacts.READ.equals(mInfo.getType())) {
+                UIUtils.showToastSafe("该书没有点读文件！");
+            }else {
+                checkLocalBook();
+            }
         } else {
             LogUtils.e(TAG, "该书支持 点读 检测点读文件");
             LogUtils.e(TAG, "执行检测 音频文件");
@@ -466,7 +473,7 @@ public class OpenReaderUtils {
                         LogUtils.e(TAG, "删除本地音频文件");
                         FileUtils.delFileOrFolder(FileUtil.getAudioPath() + mInfo.getBookId() + "/");
                         LogUtils.e(TAG, "下载音频文件 ");
-                        doFileMedia();
+                        doFileMedias();
                     } else {
                         LogUtils.e(TAG, "服务器MD5值 和本地 音频文件MD5值相同 继续校验");
                         LogUtils.e(TAG, "执行检测配置文件 ");
@@ -503,7 +510,7 @@ public class OpenReaderUtils {
                     LogUtils.e(TAG, "删除本地配置文件");
                     FileUtils.delFileOrFolder(FileUtil.getConfigurePath() + mInfo.getBookId() + "/");
                     LogUtils.e(TAG, "下载配置文件 ");
-                    doFileConfigs();
+                    doFileConfig();
 
                 } else {
                     LogUtils.e(TAG, "服务器MD5值 和本地 配置文件MD5值相同 继续校验");
@@ -517,11 +524,11 @@ public class OpenReaderUtils {
             }
         } else {
             LogUtils.e(TAG, "下载配置文件 ");
-            doFileConfigs();
+            doFileConfig();
         }
     }
 
-    private void doFileConfigs() {
+    private void doFileMedias() {
         if (mDialogUtils == null)
             mDialogUtils = new DialogUtils(BaseFragmentActivity.getForegroundActivity());
         mDialogUtils.setTitle("点读文件有更新，是否更新新版本？");
@@ -533,7 +540,8 @@ public class OpenReaderUtils {
             @Override
             public void OnClickListener(BaseDialogs mDialogs) {
                 mDialogs.dismiss();
-                doFileConfig();
+                doFileMedia();
+
             }
         });
     }

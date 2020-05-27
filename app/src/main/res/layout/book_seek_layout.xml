@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_seek_opt"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y86"
+    android:background="@color/white"
+    android:clickable="true">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imgBtn_page_pre"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x4"
+            android:background="@null"
+            android:src="@drawable/ic_book_pre" />
+
+        <TextView
+            android:id="@+id/tv_book_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text=" 目录 "
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/x36"
+            android:visibility="gone" />
+
+        <SeekBar
+            android:id="@+id/seekbar_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/imgBtn_page_next"
+            android:layout_toRightOf="@id/imgBtn_page_pre"
+            android:layout_weight="1"
+            android:indeterminate="false"
+            android:maxHeight="@dimen/y6"
+            android:minHeight="@dimen/y6"
+            android:progressDrawable="@drawable/selector_tools_book_seek_bg"
+            android:thumb="@drawable/ic_book_thumb"
+            android:thumbOffset="0dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn_page_next"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/y60"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x4"
+            android:background="@null"
+            android:src="@drawable/ic_book_next" />
+
+        <TextView
+
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/x24"
+            android:background="@drawable/ic_pdf_text_background"
+            android:layout_marginRight="@dimen/y24"
+            android:text=""/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

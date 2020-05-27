@@ -32,9 +32,10 @@
         <activity android:name=".activity.BookActiivty"></activity>
         <activity android:name=".activity.ReviseActivity"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan"></activity>
-
         <activity android:name=".activity.QuestionDetailActivity"></activity>
-        <activity android:name=".activity.ReadPdfBookActivity"></activity>
+        <activity android:name=".activity.ReadPdfBookActivity"
+            android:windowSoftInputMode="adjustNothing"
+            ></activity>
     </application>
 
 </manifest>

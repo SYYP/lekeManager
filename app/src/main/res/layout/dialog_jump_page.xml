@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/color_background_white">
     <RelativeLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:id="@+id/real_jump"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_gravity="center"
         android:background="@drawable/img_xiaodui">
 
-        <TextView
-            android:id="@+id/text_title"
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:id="@+id/liner"
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x120"
-            android:layout_marginTop="@dimen/y354"
-            android:text="跳转到页码"
-            android:textColor="@color/book_title_color"
-            android:textSize="@dimen/x30" />
+            android:layout_marginLeft="@dimen/x158"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <RelativeLayout
-            android:id="@+id/real"
-            android:layout_width="@dimen/x110"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/y344"
-            android:layout_toRightOf="@id/text_title"
-            android:background="@drawable/shape_bottom_line">
-
-            <EditText
-                android:id="@+id/edit_page"
+            <TextView
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/x30" />
+                android:text="跳转到页码："
+                android:textColor="@color/black"
+                android:textSize="@dimen/x24" />
 
-        </RelativeLayout>
+            <EditText
+                android:layout_gravity="center"
+                android:id="@+id/et_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="1"
+                android:gravity="center"
+                android:inputType="number" />
+
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/real"
-            android:layout_marginTop="@dimen/y86">
-
+            android:layout_below="@id/liner"
+            android:layout_marginTop="@dimen/x222">
             <Button
-                android:id="@+id/btn_sure"
+                android:id="@+id/btn_confirm"
                 android:layout_width="@dimen/x300"
                 android:layout_height="@dimen/y60"
                 android:layout_centerInParent="true"
@@ -58,7 +62,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/img_pause"
+        android:id="@+id/btn_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/real_jump"

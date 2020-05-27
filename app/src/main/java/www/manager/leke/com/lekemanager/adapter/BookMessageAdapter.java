@@ -78,12 +78,12 @@ public class BookMessageAdapter extends RecyclerView.Adapter<BookMessageAdapter.
                                 mTextpage1.setText(nodes2.size() + "页");
                                 for (int k = 0; k < nodes2.size(); k++) {//第四级
                                     View inflate2 = LayoutInflater.from(mContext).inflate(R.layout.add_xq_view, linearLayout1, false);
-                                    TextView mTextTitle2 = inflate1.findViewById(R.id.text_title);
-                                    TextView mTextpage2 = inflate1.findViewById(R.id.text_page);
-                                    LinearLayout linearLayout2 = inflate1.findViewById(R.id.liner_adds);
+                                    TextView mTextTitle2 = inflate2.findViewById(R.id.text_title);
+                                    TextView mTextpage2 = inflate2.findViewById(R.id.text_page);
+                                    LinearLayout linearLayout2 = inflate2.findViewById(R.id.liner_adds);
                                     //加载数据
                                     mTextTitle2.setText(nodes2.get(i).getName());
-                                    linearLayout2.addView(inflate2);
+                                    linearLayout1.addView(inflate2);
                                     List<BookMessageDetail.BookContentsBean.NodesBeanX.NodesBean> nodes3 = nodes2.get(k).getNodes();
                                     if (nodes3 != null && nodes3.size() > 0) {
                                         mTextpage2.setText(nodes3.size() + "页");

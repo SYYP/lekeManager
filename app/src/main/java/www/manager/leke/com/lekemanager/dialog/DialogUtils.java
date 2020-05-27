@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -193,30 +194,34 @@ public class DialogUtils {
 
         this.mJumpOnClick = jumpOnClick;
     }
-
-    private void showJumpBook() {
-        //设置触摸dialog外围是否关闭
-        mDialogs = mBuilder.setViewId(R.layout.dialog_jump_page)
-                .setGravity(Gravity.CENTER)
-                .setAnimation(R.style.Alpah_aniamtion)
-                .setWidthHeightpx(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
-                //设置触摸dialog外围是否关闭
-                .isOnTouchCanceled(true)
-                .builder();
-        mDialogs.show();
-        final EditText editTextPage = mDialogs.getView(R.id.edit_page);
-        mDialogs.getView(R.id.btn_sure).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mJumpOnClick.OnClickListener(mDialogs, editTextPage.getText().toString());
-            }
-        });
-        mDialogs.getView(R.id.img_pause).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mDialogs.dismiss();
-            }
-        });
+//
+//    private void showJumpBook() {
+//        //设置触摸dialog外围是否关闭
+//        mDialogs = mBuilder.setViewId(R.layout.dialog_jump_page)
+//                .setGravity(Gravity.CENTER)
+//                .setAnimation(R.style.Alpah_aniamtion)
+//                .setWidthHeightpx(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
+//                //设置触摸dialog外围是否关闭
+//                .isOnTouchCanceled(true)
+//                .builder();
+//        mDialogs.show();
+//        final EditText editTextPage = mDialogs.getView(R.id.edit_page);
+//        mDialogs.getView(R.id.btn_sure).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mJumpOnClick.OnClickListener(mDialogs, editTextPage.getText().toString());
+//            }
+//        });
+//        mDialogs.getView(R.id.img_pause).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mDialogs.dismiss();
+//            }
+//        });
+//    }
+    public static void showBookJumpPageDialog(Context context, int currentPage, int totalPage, BookJumpPageDialog.IJumpPageListener jumpPageListener){
+        BookJumpPageDialog dialog = new BookJumpPageDialog(context);
+        dialog.showDialog(currentPage, totalPage, jumpPageListener);
     }
 }
 

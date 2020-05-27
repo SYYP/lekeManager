@@ -53,5 +53,8 @@ public abstract class ProgressDialog extends BaseDialog {
     public void setProgress( int progress) {
         tvProgress.setProgress(progress);
     }
+    public int  getPrgress(){
+      return   tvProgress.getProgress();
+    }
 
 }
